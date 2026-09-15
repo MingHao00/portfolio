@@ -2,19 +2,25 @@
 
 import { SiteHeader } from '@/components/layout/SiteHeader'
 import { SkyGrassBackground } from '@/components/layout/SkyGrassBackground'
-import { useLocale } from '@/i18n/useLocale'
+import { ContactSection } from '@/components/sections/ContactSection'
+import { EducationSection } from '@/components/sections/EducationSection'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { JourneySection } from '@/components/sections/JourneySection'
+import { ProfileSection } from '@/components/sections/ProfileSection'
+import { ProjectsSection } from '@/components/sections/ProjectsSection'
 
 export default function Home() {
-  const { t } = useLocale()
-
   return (
     <>
       <SkyGrassBackground />
       <SiteHeader />
-      <main className="relative mx-auto min-h-[70vh] max-w-5xl px-4 py-10">
-        <p className="font-pixel text-xs text-[var(--color-ink)] opacity-80">
-          {t.hero.greeting}
-        </p>
+      <main className="relative mx-auto max-w-5xl px-4 pb-16">
+        <HeroSection />
+        <EducationSection />
+        <ProfileSection />
+        <ProjectsSection />
+        <JourneySection />
+        <ContactSection />
       </main>
     </>
   )

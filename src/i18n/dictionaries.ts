@@ -11,6 +11,8 @@ export type Dict = {
   }
   hero: {
     greeting: string
+    name: string
+    role: string
   }
   sections: {
     education: string
@@ -23,6 +25,10 @@ export type Dict = {
     label: string
   }
   contact: {
+    email: string
+    github: string
+    resume: string
+    linkedin: string
     resumeMissing: string
   }
 }
@@ -39,6 +45,8 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     hero: {
       greeting: '你好，欢迎来到我的档案站。',
+      name: '黄俊皓',
+      role: '开发者',
     },
     sections: {
       education: '教育经历',
@@ -51,6 +59,10 @@ export const dictionaries: Record<Locale, Dict> = {
       label: '语言',
     },
     contact: {
+      email: '邮箱',
+      github: 'GitHub',
+      resume: '简历',
+      linkedin: 'LinkedIn',
       resumeMissing: '简历暂未上传',
     },
   },
@@ -65,6 +77,8 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     hero: {
       greeting: 'Hi, welcome to my portfolio.',
+      name: 'Junhao Huang',
+      role: 'Developer',
     },
     sections: {
       education: 'Education',
@@ -77,6 +91,10 @@ export const dictionaries: Record<Locale, Dict> = {
       label: 'Language',
     },
     contact: {
+      email: 'Email',
+      github: 'GitHub',
+      resume: 'Resume',
+      linkedin: 'LinkedIn',
       resumeMissing: 'Resume not available yet',
     },
   },
