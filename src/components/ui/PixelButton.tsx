@@ -9,6 +9,10 @@ type PixelButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
   className?: string
   variant?: PixelButtonVariant
+  'aria-expanded'?: boolean | 'true' | 'false'
+  'aria-haspopup'?: boolean | 'false' | 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog'
+  'aria-controls'?: string
+  'aria-label'?: string
 }
 
 const VARIANT_CLASS: Record<PixelButtonVariant, string> = {
@@ -33,8 +37,18 @@ export function PixelButton({
   onClick,
   className,
   variant = 'primary',
+  'aria-expanded': ariaExpanded,
+  'aria-haspopup': ariaHaspopup,
+  'aria-controls': ariaControls,
+  'aria-label': ariaLabel,
 }: PixelButtonProps) {
   const classes = cn(BASE_CLASS, VARIANT_CLASS[variant], className)
+  const ariaProps = {
+    'aria-expanded': ariaExpanded,
+    'aria-haspopup': ariaHaspopup,
+    'aria-controls': ariaControls,
+    'aria-label': ariaLabel,
+  }
 
   if (href) {
     const isExternal = /^https?:\/\//i.test(href)
@@ -44,6 +58,7 @@ export function PixelButton({
         href={href}
         className={classes}
         onClick={onClick}
+        {...ariaProps}
         {...(isExternal
           ? { target: '_blank', rel: 'noopener noreferrer' }
           : {})}
@@ -54,7 +69,7 @@ export function PixelButton({
   }
 
   return (
-    <button type="button" className={classes} onClick={onClick}>
+    <button type="button" className={classes} onClick={onClick} {...ariaProps}>
       {children}
     </button>
   )
