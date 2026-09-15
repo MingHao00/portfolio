@@ -17,12 +17,13 @@
   <body>
     <!-- 导航（嵌入文档流，非固定） -->
     <header class="site-header">
-      <a class="logo" href="#">HuangJunhao</a>
+      <a class="logo" href="#">Jimmy</a>
       <div class="header-right">
         <nav>
           <ul class="site-nav">
-            <li><a href="#projects" data-i18n="nav.pro">职业</a></li>
-            <li><a href="#about" data-i18n="nav.personal">个人</a></li>
+            <!-- 职业/个人为独立页面（稍后制作），联系我锚定本页联系区 -->
+            <li><a href="professional.html" data-i18n="nav.pro">职业</a></li>
+            <li><a href="personal.html" data-i18n="nav.personal">个人</a></li>
             <li><a href="#contact" data-i18n="nav.contact">联系我</a></li>
           </ul>
         </nav>
@@ -52,7 +53,7 @@
           <div class="hero-text">
             <p class="eyebrow reveal" data-i18n="hero.eyebrow">// 欢迎来到我的作品集</p>
             <h1 class="reveal">
-              <span data-i18n="hero.hello">你好，我是</span>
+              <span data-i18n="hero.hello">你好，我是</span><br />
               <span class="accent" data-i18n="hero.name">黄俊皓</span>
             </h1>
             <p class="tagline reveal" data-i18n="hero.tagline">Vibe Coding 实践者 | AI 应用开发</p>
@@ -74,6 +75,35 @@
           <!-- 替换为真实照片：<img src="portrait.jpg" alt="黄俊皓" /> -->
           <div class="avatar reveal">
             <span>PHOTO</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 教育经历（占位内容，待替换为真实信息） -->
+      <section id="education" class="section container">
+        <h2 class="section-title reveal">
+          <span data-i18n="edu.t1">教育</span><span class="accent" data-i18n="edu.t2">经历</span>
+        </h2>
+        <div class="education-list">
+          <div class="education-item reveal">
+            <div>
+              <h3 data-i18n="edu1.degree">本科 · XX 专业</h3>
+              <p class="school" data-i18n="edu1.school">XX 大学 — 荣誉奖项（如有）</p>
+            </div>
+            <div class="meta">
+              <span class="date" data-i18n="edu1.date">2022.09 - 2026.06</span>
+              <span class="score" data-i18n="edu1.score">GPA 3.7</span>
+            </div>
+          </div>
+          <div class="education-item reveal">
+            <div>
+              <h3 data-i18n="edu2.degree">高中</h3>
+              <p class="school" data-i18n="edu2.school">XX 中学 — 荣誉奖项（如有）</p>
+            </div>
+            <div class="meta">
+              <span class="date" data-i18n="edu2.date">2019.09 - 2022.06</span>
+              <span class="score" data-i18n="edu2.score">98.5</span>
+            </div>
           </div>
         </div>
       </section>

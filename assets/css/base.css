@@ -80,8 +80,7 @@ button {
 
 /* ---- 布局工具 ---- */
 .container {
-  width: 100%;
-  max-width: var(--container);
+  width: var(--container);
   margin-inline: auto;
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
