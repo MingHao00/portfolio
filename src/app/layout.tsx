@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_SC, Press_Start_2P } from 'next/font/google'
+import { LocaleProvider } from '@/i18n/LocaleProvider'
 import './globals.css'
 
 const notoSansSc = Noto_Sans_SC({
@@ -28,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className={`${notoSansSc.variable} ${pressStart2P.variable}`}>
-      <body className={notoSansSc.className}>{children}</body>
+      <body className={notoSansSc.className}>
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   )
 }
