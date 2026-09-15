@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设计规范 — PortfolioKimiK3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <style>
+      /* 规范页专用样式 */
+      .spec-section { padding-block: var(--space-12); border-bottom: 1px solid var(--border-subtle); }
+      .spec-heading { font-size: var(--text-2xl); margin-bottom: var(--space-8); }
+      .spec-heading code { color: var(--accent-green); font-size: var(--text-sm); margin-left: var(--space-3); }
+      .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); }
+      .swatch { border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; }
+      .swatch .color { height: 80px; }
+      .swatch .meta { padding: var(--space-3); font-size: var(--text-xs); }
+      .swatch .meta strong { display: block; color: var(--text-primary); }
+      .swatch .meta span { color: var(--text-muted); }
+      .type-row { display: flex; align-items: baseline; gap: var(--space-6); padding: var(--space-3) 0; border-bottom: 1px dashed var(--border-subtle); }
+      .type-row code { color: var(--text-muted); font-size: var(--text-xs); min-width: 120px; }
+      .radius-row, .shadow-row { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+      .demo-box { width: 120px; height: 80px; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: grid; place-items: end start; padding: var(--space-2); font-size: var(--text-xs); color: var(--text-muted); }
+      .motion-demo { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+      .motion-ball { width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--accent); }
+      .note { color: var(--text-secondary); font-size: var(--text-sm); margin-top: var(--space-4); }
+      .do { color: var(--accent-green); } .dont { color: #ff7a90; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="index.html">HuangJunhao</a>
+      <div class="header-right">
+        <nav>
+          <ul class="site-nav">
+            <li><a href="index.html#projects" data-i18n="nav.pro">职业</a></li>
+            <li><a href="index.html#about" data-i18n="nav.personal">个人</a></li>
+            <li><a href="index.html#contact" data-i18n="nav.contact">联系我</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+            </svg>
+            <span id="langLabel">中文</span>
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+            <li role="option" data-lang="zh" aria-selected="true">中文</li>
+            <li role="option" data-lang="en" aria-selected="false">English</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="container" style="padding-top: var(--space-8)">
+      <p class="eyebrow">// Design System v1.0</p>
+      <h1 style="font-size: var(--text-4xl); margin: var(--space-4) 0 var(--space-8)">
+        PortfolioKimiK3 <span style="color: var(--accent)">设计规范</span>
+      </h1>
+      <p class="note">风格基调：深色极客风 · 等宽字体 · 紫色强调 · 网格纹理 · 胶囊按钮</p>
+
+      <!-- 色板 -->
+      <section id="colors" class="spec-section">
+        <h2 class="spec-heading">色板<code>theme.css :root</code></h2>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="color" style="background: #0f0e1a"></div><div class="meta"><strong>--bg-base</strong><span>#0F0E1A 页面背景</span></div></div>
+          <div class="swatch"><div class="color" style="background: #17162b"></div><div class="meta"><strong>--bg-elevated</strong><span>#17162B 卡片背景</span></div></div>
+          <div class="swatch"><div class="color" style="background: #cbacf9"></div><div class="meta"><strong>--accent</strong><span>#CBACF9 主强调</span></div></div>
+          <div class="swatch"><div class="color" style="background: #00ff99"></div><div class="meta"><strong>--accent-green</strong><span>#00FF99 次强调（少用）</span></div></div>
+          <div class="swatch"><div class="color" style="background: #ffffff"></div><div class="meta"><strong>--text-primary</strong><span>#FFFFFF 标题</span></div></div>
+          <div class="swatch"><div class="color" style="background: #bec1dd"></div><div class="meta"><strong>--text-secondary</strong><span>#BEC1DD 正文</span></div></div>
+          <div class="swatch"><div class="color" style="background: #7c7f9a"></div><div class="meta"><strong>--text-muted</strong><span>#7C7F9A 弱化</span></div></div>
+          <div class="swatch"><div class="color" style="background: #3f3e48"></div><div class="meta"><strong>--border-strong</strong><span>#3F3E48 边框</span></div></div>
+        </div>
+        <p class="note"><span class="do">✓ Do</span> 强调色只用于关键词、链接、描边按钮 · <span class="dont">✗ Don't</span> 大面积铺紫色或绿色</p>
+      </section>
+
+      <!-- 字体 -->
+      <section id="type" class="spec-section">
+        <h2 class="spec-heading">字体阶梯<code>JetBrains Mono + 中文系统回退</code></h2>
+        <div class="type-row"><code>--text-6xl 60px</code><span style="font-size: var(--text-6xl); font-weight: 700">黄俊皓 Aa</span></div>
+        <div class="type-row"><code>--text-4xl 36px</code><span style="font-size: var(--text-4xl); font-weight: 700">精选项目 Aa</span></div>
+        <div class="type-row"><code>--text-2xl 24px</code><span style="font-size: var(--text-2xl)">卡片标题 Aa</span></div>
+        <div class="type-row"><code>--text-lg 18px</code><span style="font-size: var(--text-lg)">定位语 Aa</span></div>
+        <div class="type-row"><code>--text-base 16px</code><span>正文文本 Body Aa 0123456789</span></div>
+        <div class="type-row"><code>--text-sm 14px</code><span style="font-size: var(--text-sm)">辅助文本 Aa</span></div>
+        <div class="type-row"><code>--text-xs 12px</code><span style="font-size: var(--text-xs)">标签 / EYEBROW</span></div>
+        <p class="note">标题字重 700、字距 -0.02em；眉行使用大写 + 0.2em 字距制造"代码注释"感。</p>
+      </section>
+
+      <!-- 间距与圆角 -->
+      <section class="spec-section">
+        <h2 class="spec-heading">间距与圆角<code>4px 基网</code></h2>
+        <div class="radius-row">
+          <div class="demo-box" style="border-radius: var(--radius-sm)">sm 8px</div>
+          <div class="demo-box" style="border-radius: var(--radius-md)">md 12px</div>
+          <div class="demo-box" style="border-radius: var(--radius-lg)">lg 16px</div>
+          <div class="demo-box" style="border-radius: var(--radius-xl)">xl 24px</div>
+          <div class="demo-box" style="border-radius: var(--radius-full)">full 胶囊</div>
+        </div>
+        <p class="note">板块间距 --section-gap（clamp 4-8rem）；容器最大宽度 --container 1152px；按钮/标签一律胶囊圆角。</p>
+      </section>
+
+      <!-- 阴影 -->
+      <section class="spec-section">
+        <h2 class="spec-heading">阴影<code>深色环境用发光代替投影</code></h2>
+        <div class="shadow-row">
+          <div class="demo-box" style="box-shadow: var(--shadow-card)">--shadow-card</div>
+          <div class="demo-box" style="box-shadow: var(--shadow-glow)">--shadow-glow</div>
+          <div class="demo-box" style="box-shadow: var(--shadow-green-glow)">--shadow-green-glow</div>
+        </div>
+      </section>
+
+      <!-- 动效 -->
+      <section class="spec-section">
+        <h2 class="spec-heading">动效<code>150 / 250 / 400ms · ease-out</code></h2>
+        <div class="motion-demo">
+          <div class="motion-ball" style="animation: float-y 2s infinite var(--ease-out)"></div>
+        </div>
+        <p class="note">
+          入场：reveal-up（上移 24px 淡入，IntersectionObserver 触发）·
+          悬停：颜色/边框过渡 150-250ms，卡片上浮 -6px ·
+          始终尊重 prefers-reduced-motion。
+        </p>
+      </section>
+
+      <!-- 组件 -->
+      <section id="components" class="spec-section">
+        <h2 class="spec-heading">组件<code>components.css</code></h2>
+        <div class="radius-row" style="align-items: center">
+          <button class="btn btn-primary" type="button">主按钮</button>
+          <button class="btn btn-secondary" type="button">次按钮</button>
+          <span class="chip">技术标签</span>
+          <a class="icon-link" href="#" aria-label="示例图标">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p class="note">
+          <span class="do">✓ Do</span> 图标统一 inline SVG、24×24 viewBox ·
+          <span class="dont">✗ Don't</span> 用 Emoji 当图标、hover 时缩放导致布局位移
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>PortfolioKimiK3 Design System · 迁移到 Tailwind v4：复制 theme.css 底部的 @theme 块</p>
+    </footer>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/prototype.js"></script>
+  </body>
+</html>

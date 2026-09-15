@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>黄俊皓 — Vibe Coding 实践者</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+  </head>
+  <body>
+    <!-- 导航（嵌入文档流，非固定） -->
+    <header class="site-header">
+      <a class="logo" href="#">HuangJunhao</a>
+      <div class="header-right">
+        <nav>
+          <ul class="site-nav">
+            <li><a href="#projects" data-i18n="nav.pro">职业</a></li>
+            <li><a href="#about" data-i18n="nav.personal">个人</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">联系我</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+            </svg>
+            <span id="langLabel">中文</span>
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+            <li role="option" data-lang="zh" aria-selected="true">中文</li>
+            <li role="option" data-lang="en" aria-selected="false">English</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero：左文右图 -->
+      <section class="hero container">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="eyebrow reveal" data-i18n="hero.eyebrow">// 欢迎来到我的作品集</p>
+            <h1 class="reveal">
+              <span data-i18n="hero.hello">你好，我是</span>
+              <span class="accent" data-i18n="hero.name">黄俊皓</span>
+            </h1>
+            <p class="tagline reveal" data-i18n="hero.tagline">Vibe Coding 实践者 | AI 应用开发</p>
+            <div class="actions reveal">
+              <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="hero.resume">查看简历</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="btn btn-secondary" href="https://github.com/MingHao00" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+          <!-- 替换为真实照片：<img src="portrait.jpg" alt="黄俊皓" /> -->
+          <div class="avatar reveal">
+            <span>PHOTO</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 精选项目 -->
+      <section id="projects" class="section container">
+        <h2 class="section-title reveal">
+          <span data-i18n="projects.t1">精选</span><span class="accent" data-i18n="projects.t2">项目</span>
+        </h2>
+        <div class="project-grid">
+          <a class="project-card reveal" href="https://github.com/MingHao00/personal-portfolio" target="_blank" rel="noopener noreferrer">
+            <div class="project-cover cover-1"><span>01</span></div>
+            <div class="project-body">
+              <h3 data-i18n="p1.name">个人作品集网站</h3>
+              <p data-i18n="p1.desc">使用 React + TypeScript + Tailwind CSS 构建的现代化作品集网站</p>
+              <div class="project-tech">
+                <span class="chip">React</span>
+                <span class="chip">TypeScript</span>
+                <span class="chip">Tailwind CSS</span>
+              </div>
+              <span class="project-link" data-i18n="p1.link">访问项目 →</span>
+            </div>
+          </a>
+
+          <a class="project-card reveal" href="https://doi.org/10.3390/su16188227" target="_blank" rel="noopener noreferrer">
+            <div class="project-cover cover-2"><span>02</span></div>
+            <div class="project-body">
+              <h3 data-i18n="p2.name">N-BEATS 模型时序预测</h3>
+              <p data-i18n="p2.desc">先进时间序列分析技术，优化景区管理和规划、推动旅游业可持续发展</p>
+              <div class="project-tech">
+                <span class="chip">N-BEATS</span>
+                <span class="chip">Deep Learning</span>
+                <span class="chip">Time Series</span>
+              </div>
+              <span class="project-link" data-i18n="p2.link">查看论文 →</span>
+            </div>
+          </a>
+
+          <a class="project-card reveal" href="https://github.com/MingHao00/personal-portfolio" target="_blank" rel="noopener noreferrer">
+            <div class="project-cover cover-3"><span>03</span></div>
+            <div class="project-body">
+              <h3 data-i18n="p3.name">主脑 AI 智能体</h3>
+              <p data-i18n="p3.desc">基于 Spring AI 的企业级智能体应用，集成 RAG 知识库与工具调用</p>
+              <div class="project-tech">
+                <span class="chip">Java</span>
+                <span class="chip">Spring AI</span>
+                <span class="chip">RAG</span>
+              </div>
+              <span class="project-link" data-i18n="p3.link">访问项目 →</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Bento 关于我 -->
+      <section id="about" class="section container">
+        <h2 class="section-title reveal">
+          <span data-i18n="about.t1">关于</span><span class="accent" data-i18n="about.t2">我</span>
+        </h2>
+        <div class="bento">
+          <div class="bento-card bento-intro reveal">
+            <p class="label" data-i18n="bento.intro.label">// 简介</p>
+            <p data-i18n="bento.intro.text">
+              你好，我是黄俊皓。Vibe Coding 实践者——用自然语言驱动 AI 构建产品，这个网站即成果之一。大学期间自学 Python（爬虫 / Pandas / 机器学习），并以共同第一作者身份发表 SSCI Q2 论文。我相信：AI 提供雏形，人负责完善。
+            </p>
+          </div>
+          <div class="bento-card bento-quote reveal">
+            <p class="label" data-i18n="bento.quote.label">// 信条</p>
+            <blockquote data-i18n="bento.quote.text">「人工智能的时代来了，个人的时代也来了。」</blockquote>
+          </div>
+          <div class="bento-card bento-paper reveal">
+            <p class="label" data-i18n="bento.paper.label">// 学术成果</p>
+            <p class="big">SSCI Q2</p>
+            <p>
+              <span data-i18n="bento.paper.sub">共同第一作者 · 2024.10</span><br />
+              <span data-i18n="bento.paper.line2">N-BEATS 时序预测 × 可持续旅游</span>
+            </p>
+          </div>
+          <div class="bento-card bento-stack reveal">
+            <p class="label" data-i18n="bento.stack.label">// 技术栈</p>
+            <div class="project-tech">
+              <span class="chip">Python</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Java</span>
+              <span class="chip">Spring AI</span>
+              <span class="chip">Cursor</span>
+            </div>
+          </div>
+          <div class="bento-card bento-art reveal">
+            <!-- 替换为压缩后的 tv-myself 插画：<img src="tv-myself.webp" alt="我的插画" /> -->
+            <span class="label">ILLUSTRATION</span>
+          </div>
+          <div class="bento-card bento-mail reveal">
+            <p class="label" data-i18n="bento.mail.label">// 邮箱</p>
+            <p style="margin-bottom: var(--space-4)" data-i18n="bento.mail.text">对我的经历感兴趣？欢迎写信交流。</p>
+            <button class="btn btn-primary" type="button" data-copy="1004601438@qq.com">
+              <span class="btn-label" data-i18n="bento.mail.btn">复制邮箱地址</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 联系 -->
+      <section id="contact" class="section container contact">
+        <p class="eyebrow reveal" data-i18n="contact.eyebrow">// 联系我</p>
+        <h2 class="reveal">
+          <span data-i18n="contact.t1">联系</span><span style="color: var(--accent)" data-i18n="contact.t2">我</span>
+        </h2>
+        <p class="desc reveal" data-i18n="contact.desc">无论是合作机会、技术交流，还是仅仅打个招呼——欢迎随时联系。</p>
+        <div class="actions reveal">
+          <button class="btn btn-primary" type="button" data-copy="1004601438@qq.com">
+            <span class="btn-label" data-i18n="contact.copy">复制邮箱</span>
+          </button>
+          <a class="icon-link" href="mailto:1004601438@qq.com" aria-label="发送邮件">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </a>
+          <a class="icon-link" href="https://github.com/MingHao00" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer">© 2026 Junhao Huang · Built with Vibe Coding</p>
+    </footer>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/prototype.js"></script>
+  </body>
+</html>
