@@ -12,7 +12,7 @@ export function ContactSection() {
   const { t } = useLocale()
 
   return (
-    <section id="contact" className="scroll-mt-24 py-10 md:py-14">
+    <section id="contact" className="section-enter scroll-mt-24 py-10 md:py-14">
       <SectionTitle>{t.sections.contact}</SectionTitle>
 
       <div className="mt-6 flex flex-wrap gap-3">

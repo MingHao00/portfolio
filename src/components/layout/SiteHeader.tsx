@@ -68,6 +68,8 @@ export function SiteHeader() {
                 className={cn(
                   'font-pixel px-2 py-1 text-[10px] text-[var(--color-ink)] no-underline',
                   'hover:bg-[var(--color-accent)]',
+                  'focus-visible:bg-[var(--color-accent)]',
+                  'active:bg-[var(--color-accent)]',
                 )}
               >
                 {t.nav[item.key]}
@@ -104,6 +106,8 @@ export function SiteHeader() {
                     className={cn(
                       'font-pixel block px-2 py-3 text-xs text-[var(--color-ink)] no-underline',
                       'hover:bg-[var(--color-accent)]',
+                      'focus-visible:bg-[var(--color-accent)]',
+                      'active:bg-[var(--color-accent)]',
                     )}
                     onClick={closeMenu}
                   >

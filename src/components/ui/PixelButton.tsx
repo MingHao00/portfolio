@@ -25,7 +25,10 @@ const BASE_CLASS = cn(
   'text-[var(--color-ink)] no-underline',
   'border-2 border-[var(--color-border-dark)]',
   'shadow-[inset_2px_2px_0_var(--color-border-light),inset_-2px_-2px_0_rgba(0,0,0,0.2)]',
-  'transition-transform active:translate-y-px',
+  'transition-[transform,border-color] active:translate-y-px',
+  'hover:border-[var(--color-accent)]',
+  'focus-visible:border-[var(--color-accent)]',
+  'active:border-[var(--color-accent)]',
 )
 
 /**

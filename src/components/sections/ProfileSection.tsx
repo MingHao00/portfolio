@@ -14,7 +14,7 @@ export function ProfileSection() {
   const { locale, t } = useLocale()
 
   return (
-    <section id="profile" className="scroll-mt-24 py-10 md:py-14">
+    <section id="profile" className="section-enter scroll-mt-24 py-10 md:py-14">
       <SectionTitle>{t.sections.profile}</SectionTitle>
 
       <PixelPanel className="mt-6 px-4 py-4">

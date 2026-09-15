@@ -12,7 +12,7 @@ export function JourneySection() {
   const { locale, t } = useLocale()
 
   return (
-    <section id="journey" className="scroll-mt-24 py-10 md:py-14">
+    <section id="journey" className="section-enter scroll-mt-24 py-10 md:py-14">
       <SectionTitle>{t.sections.journey}</SectionTitle>
 
       <ol className="mt-6 flex flex-col gap-4">

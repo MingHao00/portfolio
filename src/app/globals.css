@@ -10,6 +10,9 @@
   --color-ink: #1a1a1a;
   --color-border-light: #fff6d8;
   --color-border-dark: #5a3e1b;
+  --motion-locale-fade-ms: 200ms;
+  --motion-section-enter-ms: 480ms;
+  --motion-idle-float-ms: 2.8s;
 }
 
 body {
@@ -21,4 +24,90 @@ body {
 .font-pixel {
   font-family: var(--font-pixel), "Press Start 2P", "Zpix", monospace;
   image-rendering: pixelated;
+}
+
+@keyframes hero-idle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes locale-fade-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-character {
+  animation: hero-idle-float var(--motion-idle-float-ms) ease-in-out infinite;
+}
+
+.section-enter {
+  animation: section-enter var(--motion-section-enter-ms) ease-out both;
+}
+
+.section-enter:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.section-enter:nth-child(2) {
+  animation-delay: 50ms;
+}
+
+.section-enter:nth-child(3) {
+  animation-delay: 100ms;
+}
+
+.section-enter:nth-child(4) {
+  animation-delay: 150ms;
+}
+
+.section-enter:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.section-enter:nth-child(6) {
+  animation-delay: 250ms;
+}
+
+.locale-fade {
+  animation: locale-fade-in var(--motion-locale-fade-ms) ease-out;
+}
+
+/* Warm yellow border highlight; hover only when pointer can hover */
+@media (hover: hover) {
+  .pixel-hover-border:hover {
+    --pixel-border-color: var(--color-accent);
+  }
+}
+
+.pixel-hover-border:focus-visible,
+.pixel-hover-border:active {
+  --pixel-border-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-character,
+  .section-enter,
+  .locale-fade {
+    animation: none;
+  }
 }

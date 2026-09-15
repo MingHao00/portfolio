@@ -13,7 +13,7 @@ export function ProjectsSection() {
   const { locale, t } = useLocale()
 
   return (
-    <section id="projects" className="scroll-mt-24 py-10 md:py-14">
+    <section id="projects" className="section-enter scroll-mt-24 py-10 md:py-14">
       <SectionTitle>{t.sections.projects}</SectionTitle>
 
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -23,7 +23,13 @@ export function ProjectsSection() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block no-underline transition-transform hover:-translate-y-0.5"
+            className={cn(
+              'pixel-hover-border block no-underline',
+              'transition-transform hover:-translate-y-0.5',
+              'focus-visible:outline focus-visible:outline-2',
+              'focus-visible:outline-[var(--color-accent)]',
+              'focus-visible:outline-offset-2',
+            )}
           >
             <PixelPanel className="flex h-full flex-col px-4 py-4">
               <h3 className="font-pixel text-xs leading-relaxed text-[var(--color-ink)]">

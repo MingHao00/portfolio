@@ -12,7 +12,7 @@ export function EducationSection() {
   const { locale, t } = useLocale()
 
   return (
-    <section id="education" className="scroll-mt-24 py-10 md:py-14">
+    <section id="education" className="section-enter scroll-mt-24 py-10 md:py-14">
       <SectionTitle>{t.sections.education}</SectionTitle>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">

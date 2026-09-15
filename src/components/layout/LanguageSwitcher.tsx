@@ -80,7 +80,10 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 type="button"
                 className={cn(
                   'font-pixel w-full cursor-pointer px-4 py-2 text-left text-xs',
-                  'text-[var(--color-ink)] hover:bg-[var(--color-accent)]',
+                  'text-[var(--color-ink)]',
+                  'hover:bg-[var(--color-accent)]',
+                  'focus-visible:bg-[var(--color-accent)]',
+                  'active:bg-[var(--color-accent)]',
                 )}
                 onClick={() => {
                   setLocale(item)

@@ -24,7 +24,7 @@ export function PixelPanel({ children, className, thick = false }: PixelPanelPro
       style={{
         borderStyle: 'solid',
         borderWidth,
-        borderColor: 'var(--color-border-dark)',
+        borderColor: 'var(--pixel-border-color, var(--color-border-dark))',
         boxShadow: [
           `inset ${inset}px ${inset}px 0 var(--color-border-light)`,
           `inset -${inset}px -${inset}px 0 color-mix(in srgb, var(--color-border-dark) 35%, transparent)`,

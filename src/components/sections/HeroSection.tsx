@@ -13,14 +13,14 @@ export function HeroSection() {
   const { t } = useLocale()
 
   return (
-    <section id="hero" className="scroll-mt-24 py-10 md:py-14">
+    <section id="hero" className="section-enter scroll-mt-24 py-10 md:py-14">
       <div className="flex flex-col items-center gap-6 md:flex-row md:items-end md:gap-8">
         <img
           src={HERO_IMAGE_SRC}
           alt={HERO_IMAGE_ALT}
           width={128}
           height={128}
-          className="h-28 w-28 shrink-0 md:h-36 md:w-36"
+          className="hero-character h-28 w-28 shrink-0 md:h-36 md:w-36"
           style={{ imageRendering: 'pixelated' }}
         />
 
