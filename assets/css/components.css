@@ -94,6 +94,44 @@
   .site-nav { display: none; }
 }
 
+/* 导航当前页高亮：紫色文字 + 下划线 */
+.site-nav a {
+  position: relative;
+  padding-bottom: var(--space-1);
+}
+
+.site-nav a.active {
+  color: var(--accent);
+}
+
+.site-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * var(--space-1));
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* ---- 纯图标按钮（紫色调） ---- */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  color: var(--accent);
+  border: 1px solid rgba(203, 172, 249, 0.35);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.btn-icon:hover {
+  background: var(--accent-dim);
+  box-shadow: var(--shadow-glow);
+}
+
 /* ---- 语言切换 ---- */
 .lang-switch {
   position: relative;
@@ -183,17 +221,35 @@
 }
 
 .hero h1 {
-  font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
   margin: var(--space-6) 0 var(--space-4);
 }
 
+/* 名字悬停幕布效果：
+   悬停——紫色背景从左向右铺满，文字渐变为深色；
+   离开——背景从右向左收回（深色回归），文字渐变回紫色 */
 .hero h1 .accent {
+  display: inline-block;
+  padding: 0 var(--space-2);
   color: var(--accent);
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  border-radius: var(--radius-sm);
+  transition:
+    background-size var(--duration-slow) var(--ease-out),
+    color var(--duration-slow) var(--ease-out);
+}
+
+.hero h1 .accent:hover {
+  background-size: 100% 100%;
+  color: var(--bg-base);
 }
 
 .hero .tagline {
   color: var(--text-secondary);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   margin-bottom: var(--space-8);
 }
 
@@ -203,10 +259,81 @@
   flex-wrap: wrap;
 }
 
-/* 圆形头像：紫色描边 + 微光晕 */
-.avatar {
+/* 圆形头像：紫色描边 + 木星环 */
+@property --orbit-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes orbit-spin {
+  to { --orbit-angle: 360deg; }
+}
+
+.avatar-wrap {
+  position: relative;
   flex-shrink: 0;
-  width: clamp(260px, 24vw, 420px);
+  --avatar-size: clamp(260px, 24vw, 420px);
+}
+
+/* 木星环本体：倾斜平面上的紫色软环（rotateX 压扁成椭圆 + rotateZ 下倾 20°） */
+.jupiter-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--avatar-size) * 1.4);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(70deg) rotateZ(-20deg);
+  background: radial-gradient(
+    farthest-side,
+    transparent 78%,
+    rgba(203, 172, 249, 0.08) 82%,
+    rgba(203, 172, 249, 0.35) 87%,
+    rgba(239, 226, 255, 0.5) 90%,
+    rgba(203, 172, 249, 0.35) 93%,
+    rgba(203, 172, 249, 0.08) 97%,
+    transparent 99%
+  );
+  pointer-events: none;
+}
+
+/* 后半环：沉在头像后面 */
+.ring-back {
+  z-index: 0;
+  clip-path: inset(0 0 50% 0);
+}
+
+/* 前半环：盖在头像下端 */
+.ring-front {
+  z-index: 2;
+  clip-path: inset(50% 0 0 0);
+}
+
+/* 环上光点：在倾斜平面内公转，反向旋转保持圆点不被压扁 */
+.ring-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--dot-size, 5px);
+  height: var(--dot-size, 5px);
+  margin: calc(var(--dot-size, 5px) / -2) 0 0 calc(var(--dot-size, 5px) / -2);
+  border-radius: 50%;
+  background: var(--dot-color, var(--accent));
+  box-shadow: 0 0 6px var(--dot-color, var(--accent)),
+    0 0 12px var(--dot-color, var(--accent));
+  transform: rotate(calc(var(--orbit-angle) + var(--phase, 0deg)))
+    translateX(var(--r))
+    rotate(calc(-1 * (var(--orbit-angle) + var(--phase, 0deg))))
+    rotateZ(20deg)
+    rotateX(-70deg);
+  animation: orbit-spin var(--dur, 8s) linear infinite;
+}
+
+.avatar {
+  position: relative;
+  z-index: 1;
+  width: var(--avatar-size);
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid var(--accent);
@@ -267,7 +394,8 @@
 }
 
 .education-item h3 {
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
+  letter-spacing: 0.025em;
   margin-bottom: var(--space-2);
 }
 
@@ -290,7 +418,7 @@
 }
 
 .education-item .score {
-  font-size: var(--text-2xl);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-5xl));
   font-weight: 700;
   color: var(--accent-green);
 }
@@ -360,7 +488,7 @@
 }
 
 .project-body h3 {
-  font-size: var(--text-xl);
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-2xl));
 }
 
 .project-body p {
@@ -452,7 +580,7 @@
 }
 
 .contact h2 {
-  font-size: clamp(var(--text-4xl), 7vw, var(--text-6xl));
+  font-size: clamp(var(--text-5xl), 7vw, var(--text-giant));
   margin-bottom: var(--space-6);
 }
 

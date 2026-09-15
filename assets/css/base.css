@@ -90,7 +90,7 @@ button {
 }
 
 .section-title {
-  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-size: clamp(var(--text-4xl), 4vw, var(--text-5xl));
   text-align: center;
   margin-bottom: var(--space-16);
 }
@@ -100,10 +100,19 @@ button {
 }
 
 .eyebrow {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* ---- 按语言显隐（配合 i18n.js 切换 <html lang>） ---- */
+html[lang="zh-CN"] .only-en {
+  display: none;
+}
+
+html[lang="en"] .only-zh {
+  display: none;
 }
 
 /* ---- 动效 ---- */

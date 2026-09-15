@@ -21,14 +21,18 @@
   /* ---- 字体 Typography ---- */
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular,
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --text-xs: 0.8125rem;  /* 13px */
-  --text-sm: 0.9375rem;  /* 15px */
-  --text-base: 1.0625rem; /* 17px */
-  --text-lg: 1.25rem;    /* 20px */
-  --text-xl: 1.375rem;   /* 22px */
-  --text-2xl: 1.75rem;   /* 28px */
-  --text-4xl: 3rem;      /* 48px */
-  --text-6xl: 5rem;      /* 80px */
+  /* 字号体系对标参考站 radnaabazar.com：
+     正文克制（14-16px），层级靠大标题（36→48→72→80px）拉开对比 */
+  --text-xs: 0.75rem;    /* 12px 标签/眉行/芯片 */
+  --text-sm: 0.875rem;   /* 14px 按钮/导航/卡片描述 */
+  --text-base: 1rem;     /* 16px 正文 */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px 卡片标题（桌面端） */
+  --text-4xl: 2.25rem;   /* 36px 板块标题（移动端） */
+  --text-5xl: 3rem;      /* 48px 板块标题（桌面端）/ 时间线大数字 */
+  --text-7xl: 4.5rem;    /* 72px Hero 名字（桌面端） */
+  --text-giant: 5rem;    /* 80px 结尾大标题（桌面端） */
   --leading-tight: 1.2;
   --leading-body: 1.75;
 
