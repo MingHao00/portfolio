@@ -21,14 +21,11 @@ const VARIANT_CLASS: Record<PixelButtonVariant, string> = {
 }
 
 const BASE_CLASS = cn(
-  'font-pixel inline-block cursor-pointer px-4 py-2 text-center text-xs',
+  'pixel-btn font-pixel inline-block cursor-pointer px-4 py-2 text-center text-xs',
   'text-[var(--color-ink)] no-underline',
   'border-2 border-[var(--color-border-dark)]',
   'shadow-[inset_2px_2px_0_var(--color-border-light),inset_-2px_-2px_0_rgba(0,0,0,0.2)]',
   'transition-[transform,border-color] active:translate-y-px',
-  'hover:border-[var(--color-accent)]',
-  'focus-visible:border-[var(--color-accent)]',
-  'active:border-[var(--color-accent)]',
 )
 
 /**

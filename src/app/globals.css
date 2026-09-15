@@ -97,11 +97,20 @@ body {
   .pixel-hover-border:hover {
     --pixel-border-color: var(--color-accent);
   }
+
+  .pixel-btn:hover {
+    border-color: var(--color-accent);
+  }
 }
 
 .pixel-hover-border:focus-visible,
 .pixel-hover-border:active {
   --pixel-border-color: var(--color-accent);
+}
+
+.pixel-btn:focus-visible,
+.pixel-btn:active {
+  border-color: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
