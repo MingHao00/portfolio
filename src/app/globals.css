@@ -1,12 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-sky: #5ec8f0;
+  --color-sky-light: #9fdcf7;
+  --color-grass: #3cb043;
+  --color-grass-dark: #2a7a32;
+  --color-accent: #f0c040;
+  --color-panel: #f5e6c8;
+  --color-ink: #1a1a1a;
+  --color-border-light: #fff6d8;
+  --color-border-dark: #5a3e1b;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  background: var(--color-sky);
+  font-family: var(--font-sans), "Noto Sans SC", system-ui, sans-serif;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel), "Press Start 2P", "Zpix", monospace;
+  image-rendering: pixelated;
 }
