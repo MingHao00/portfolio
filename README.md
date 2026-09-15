@@ -20,3 +20,9 @@ npm run build
 ## 简历
 
 将 PDF 简历放到 `public/resume.pdf`，站点可通过该路径提供下载。
+
+## 项目链接说明
+
+「主脑 AI 智能体」（`brain-agent`）在内容数据中暂链到 GitHub 主页
+`https://github.com/MingHao00`。若已有独立仓库，请更新
+`src/content/projects.ts` 中对应 `link`。
