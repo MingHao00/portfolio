@@ -51,6 +51,56 @@
   border-color: var(--accent);
 }
 
+/* ---- 页面切换动画：紫色长条分块横扫 ---- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none; /* 无 JS 时不阻塞页面，由 html.js 启用 */
+  flex-direction: column;
+  background: var(--bg-base);
+  pointer-events: auto;
+}
+
+html.js .page-transition {
+  display: flex;
+}
+
+.pt-strip {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.pt-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform 400ms var(--ease-out);
+}
+
+/* 打开页面：最下方长块先动，紫色从右向左退去（--d-open 由 JS 按倒序写入） */
+.page-transition.is-open .pt-panel {
+  transform: scaleX(0);
+  transition-delay: var(--d-open, 0ms);
+}
+
+/* 打开尾声：整体渐隐，页面渐变出现（--d-fade 由 JS 写入，值为长块动画总时长） */
+.page-transition.is-done {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+  transition-delay: var(--d-fade, 0ms);
+}
+
+/* 关闭页面：最上方长块先动，紫色从左向右填满（--d-close 由 JS 按顺序写入） */
+.page-transition.is-closing .pt-panel {
+  transform: scaleX(1);
+  transition-delay: var(--d-close, 0ms);
+}
+
 /* ---- 导航（嵌入文档流，非固定） ---- */
 .site-header {
   display: flex;
@@ -631,7 +681,7 @@
   height: auto;
 }
 
-/* ---- 旅途时间线（仿参考站 Journey） ---- */
+/* ---- 旅途时间线（仿参考站：粘性年份 + 滚动切换，每年占一屏） ---- */
 .journey-intro {
   text-align: center;
   color: var(--text-secondary);
@@ -639,28 +689,91 @@
   margin: calc(-1 * var(--space-8)) auto var(--space-16);
 }
 
-.journey-item {
+.timeline {
+  position: relative;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+/* 左侧轨道基线 + 滚动进度渐变填充 */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(1.25rem - 1px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.timeline-rail-fill {
+  position: absolute;
+  left: calc(1.25rem - 1px);
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-green));
+}
+
+/* 每个年份条目占满一屏 */
+.timeline-item {
   display: flex;
   gap: var(--space-8);
-  padding: var(--space-8) 0;
-  border-top: 1px solid var(--border-subtle);
+  min-height: 100vh;
+  padding-top: 20vh;
 }
 
-.journey-item:last-child {
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.journey-year {
+/* 粘性年份：滚动经过该年时钉在左侧，下一个年份到来时被推走 */
+.timeline-year-wrap {
+  position: sticky;
+  top: 20vh;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
   flex-shrink: 0;
-  min-width: 9rem;
-  font-size: clamp(var(--text-2xl), 4vw, var(--text-5xl));
+}
+
+.timeline-dot {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+}
+
+.timeline-dot::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-year {
+  font-size: var(--text-5xl);
   font-weight: 700;
   color: var(--text-muted);
 }
 
-.journey-body p {
-  color: var(--text-secondary);
+/* 移动端内联年份（桌面端隐藏） */
+.timeline-year-mobile {
+  display: none;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-muted);
   margin-bottom: var(--space-4);
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
 }
 
 .journey-photos {
@@ -691,14 +804,22 @@
   object-fit: cover;
 }
 
-@media (max-width: 640px) {
-  .journey-item {
-    flex-direction: column;
-    gap: var(--space-4);
+@media (max-width: 768px) {
+  /* 移动端：隐藏轨道与粘性年份，年份内联显示，条目不再占满整屏 */
+  .timeline::before,
+  .timeline-rail-fill,
+  .timeline-year-wrap {
+    display: none;
   }
 
-  .journey-year {
-    min-width: 0;
+  .timeline-item {
+    display: block;
+    min-height: auto;
+    padding-top: var(--space-12);
+  }
+
+  .timeline-year-mobile {
+    display: block;
   }
 }
 

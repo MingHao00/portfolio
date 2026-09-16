@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>设计规范 — PortfolioKimiK3</title>
+    <script>
+      // 标记 JS 可用以启用页面切换遮罩（无 JS 时遮罩保持隐藏，不阻塞内容）
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,6 +39,16 @@
     </style>
   </head>
   <body>
+    <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
+    <div class="page-transition" aria-hidden="true">
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+    </div>
+
     <header class="site-header">
       <a class="logo" href="index.html">Jimmy</a>
       <div class="header-right">

@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>黄俊皓 — Vibe Coding 实践者</title>
+    <script>
+      // 标记 JS 可用以启用页面切换遮罩（无 JS 时遮罩保持隐藏，不阻塞内容）
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +19,16 @@
     <link rel="stylesheet" href="assets/css/components.css" />
   </head>
   <body>
+    <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
+    <div class="page-transition" aria-hidden="true">
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+    </div>
+
     <!-- 导航（嵌入文档流，非固定） -->
     <header class="site-header">
       <a class="logo" href="#">Jimmy</a>
@@ -246,10 +260,15 @@
           <span data-i18n="journey.t1">我的</span><span class="accent" data-i18n="journey.t2">旅途</span>
         </h2>
         <p class="journey-intro reveal" data-i18n="journey.intro">从自学编程到 Vibe Coding——记录一路走来的几个关键节点。</p>
-        <div class="journey-list">
-          <div class="journey-item reveal">
-            <h3 class="journey-year">2026</h3>
-            <div class="journey-body">
+        <div class="timeline">
+          <div class="timeline-rail-fill" aria-hidden="true"></div>
+          <div class="timeline-item">
+            <div class="timeline-year-wrap">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <h3 class="timeline-year">2026</h3>
+            </div>
+            <div class="timeline-content reveal">
+              <h3 class="timeline-year-mobile">2026</h3>
               <p data-i18n="j1.text">深入 AI 应用开发：学习 Spring AI、RAG 与 MCP，构建「主脑」智能体项目，持续探索 Agent 工程化。</p>
               <div class="journey-photos">
                 <!-- 替换为真实照片：<img src="journey-2026-a.jpg" alt="2026" /> -->
@@ -258,9 +277,13 @@
               </div>
             </div>
           </div>
-          <div class="journey-item reveal">
-            <h3 class="journey-year">2025</h3>
-            <div class="journey-body">
+          <div class="timeline-item">
+            <div class="timeline-year-wrap">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <h3 class="timeline-year">2025</h3>
+            </div>
+            <div class="timeline-content reveal">
+              <h3 class="timeline-year-mobile">2025</h3>
               <p data-i18n="j2.text">开启 Vibe Coding 之旅：用 Cursor 以自然语言驱动开发，从零构建这个作品集网站。</p>
               <div class="journey-photos">
                 <!-- 替换为真实照片：<img src="journey-2025-a.jpg" alt="2025" /> -->
@@ -269,9 +292,13 @@
               </div>
             </div>
           </div>
-          <div class="journey-item reveal">
-            <h3 class="journey-year">2024</h3>
-            <div class="journey-body">
+          <div class="timeline-item">
+            <div class="timeline-year-wrap">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <h3 class="timeline-year">2024</h3>
+            </div>
+            <div class="timeline-content reveal">
+              <h3 class="timeline-year-mobile">2024</h3>
               <p data-i18n="j3.text">自学 Python（爬虫 / Pandas / 机器学习），以共同第一作者身份发表 SSCI Q2 论文——N-BEATS 时序预测在可持续旅游中的研究。</p>
               <div class="journey-photos">
                 <!-- 替换为真实照片：<img src="journey-2024-a.jpg" alt="2024" /> -->
