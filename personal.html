@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人生活 — Jimmy</title>
+    <script>
+      // 标记 JS 可用以启用页面切换遮罩（无 JS 时遮罩保持隐藏，不阻塞内容）
+      document.documentElement.classList.add('js');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+  </head>
+  <body>
+    <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
+    <div class="page-transition" aria-hidden="true">
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+      <div class="pt-strip"><div class="pt-panel"></div></div>
+    </div>
+
+    <!-- 导航（嵌入文档流，非固定） -->
+    <header class="site-header">
+      <a class="logo" href="index.html">Jimmy</a>
+      <div class="header-right">
+        <nav>
+          <ul class="site-nav">
+            <li><a href="index.html" data-i18n="nav.pro">职业</a></li>
+            <li><a href="personal.html" class="active" aria-current="page" data-i18n="nav.personal">个人</a></li>
+            <li><a href="index.html#contact" data-i18n="nav.contact">联系我</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+            </svg>
+            <span id="langLabel">中文</span>
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+            <li role="option" data-lang="zh" aria-selected="true">中文</li>
+            <li role="option" data-lang="en" aria-selected="false">English</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 页首 -->
+      <section class="page-hero container">
+        <p class="eyebrow reveal" data-i18n="personal.eyebrow">// Personal · 代码之外</p>
+        <h1 class="reveal">
+          <span data-i18n="personal.h1a">生活里的</span><span class="accent" data-i18n="personal.h1b">我</span>
+        </h1>
+        <p class="tagline reveal" data-i18n="personal.tagline">工作之外，我如何度过时间，以及我要去往哪里。</p>
+      </section>
+
+      <!-- 兴趣爱好（草稿内容，待替换为真实爱好） -->
+      <section id="hobbies" class="section container">
+        <h2 class="section-title reveal">
+          <span data-i18n="hobbies.t1">兴趣</span><span class="accent" data-i18n="hobbies.t2">爱好</span>
+        </h2>
+        <div class="hobby-grid">
+          <div class="hobby-card reveal">
+            <!-- 替换为真实照片：<img src="hobby-reading.jpg" alt="阅读" /> -->
+            <div class="hobby-photo"><span>PHOTO</span></div>
+            <h3 data-i18n="hobby1.title">阅读</h3>
+            <p data-i18n="hobby1.desc">小说是最近的主要消遣，也会读技术与设计类书籍——文字是成本最低的远行。</p>
+          </div>
+          <div class="hobby-card reveal">
+            <!-- 替换为真实照片：<img src="hobby-music.jpg" alt="音乐" /> -->
+            <div class="hobby-photo"><span>PHOTO</span></div>
+            <h3 data-i18n="hobby2.title">音乐</h3>
+            <p data-i18n="hobby2.desc">弹吉他放松，歌单以 Lo-fi 和独立摇滚为主，写代码时的最佳背景音。</p>
+          </div>
+          <div class="hobby-card reveal">
+            <!-- 替换为真实照片：<img src="hobby-fitness.jpg" alt="运动" /> -->
+            <div class="hobby-photo"><span>PHOTO</span></div>
+            <h3 data-i18n="hobby3.title">运动</h3>
+            <p data-i18n="hobby3.desc">保持晨跑与健身的习惯，运动是让大脑保持清醒的另一种编译。</p>
+          </div>
+          <div class="hobby-card reveal">
+            <!-- 替换为真实照片：<img src="hobby-anime.jpg" alt="动漫与游戏" /> -->
+            <div class="hobby-photo"><span>PHOTO</span></div>
+            <h3 data-i18n="hobby4.title">动漫与游戏</h3>
+            <p data-i18n="hobby4.desc">在动画与游戏里收集故事与灵感，好的作品总能反哺创作。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 未来计划（草稿内容，待替换为真实计划） -->
+      <section id="plans" class="section container">
+        <h2 class="section-title reveal">
+          <span data-i18n="plans.t1">未来</span><span class="accent" data-i18n="plans.t2">计划</span>
+        </h2>
+        <div class="plans-grid">
+          <div class="plan-card reveal">
+            <span class="num">01</span>
+            <p data-i18n="plan1">完成港大硕士学业</p>
+          </div>
+          <div class="plan-card reveal">
+            <span class="num">02</span>
+            <p data-i18n="plan2">深入 AI Agent 工程化</p>
+          </div>
+          <div class="plan-card reveal">
+            <span class="num">03</span>
+            <p data-i18n="plan3">发表下一篇论文</p>
+          </div>
+          <div class="plan-card reveal">
+            <span class="num">04</span>
+            <p data-i18n="plan4">来一次长途旅行</p>
+          </div>
+          <div class="plan-card reveal">
+            <span class="num">05</span>
+            <p data-i18n="plan5">读完 12 本书</p>
+          </div>
+          <div class="plan-card reveal">
+            <span class="num">06</span>
+            <p data-i18n="plan6">保持运动习惯</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer">© 2026 Junhao Huang · Built with Vibe Coding</p>
+    </footer>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/prototype.js"></script>
+  </body>
+</html>

@@ -823,6 +823,116 @@ html.js .page-transition {
   }
 }
 
+/* ---- 个人页：子页 Hero / 爱好 / 未来计划 ---- */
+.page-hero {
+  padding: var(--space-24) 0 var(--space-8);
+}
+
+.page-hero h1 {
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+  margin: var(--space-6) 0 var(--space-4);
+}
+
+.page-hero h1 .accent {
+  color: var(--accent);
+}
+
+.page-hero .tagline {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  max-width: 40rem;
+}
+
+/* 爱好卡片 */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.hobby-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.hobby-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+.hobby-photo {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  background:
+    radial-gradient(circle at 30% 20%, var(--accent-dim), transparent 60%),
+    var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  overflow: hidden;
+}
+
+.hobby-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hobby-card h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+.hobby-card p {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+/* 未来计划网格 */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.plan-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.plan-card:hover {
+  border-color: var(--accent-green);
+}
+
+.plan-card .num {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: var(--space-3);
+}
+
+.plan-card p {
+  font-size: var(--text-base);
+}
+
+@media (max-width: 768px) {
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---- 联系 / 页脚 ---- */
 .contact {
   text-align: center;
