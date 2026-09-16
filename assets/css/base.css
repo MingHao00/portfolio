@@ -96,7 +96,7 @@ button {
 }
 
 .section-title .accent {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 .eyebrow {
@@ -116,22 +116,24 @@ html[lang="en"] .only-zh {
 }
 
 /* ---- 动效 ---- */
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes float-y {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(8px); }
 }
 
+/* 入场显现用 transition 而非 animation：
+   animation 的 forwards 填充会持续占用 transform，覆盖悬停变换（如卡片旋转） */
 .reveal {
   opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
 }
 
 .reveal.is-visible {
-  animation: reveal-up var(--duration-slow) var(--ease-out) forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 尊重减少动效偏好 */
@@ -142,5 +144,5 @@ html[lang="en"] .only-zh {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal { opacity: 1; }
+  .reveal { opacity: 1; transform: none; }
 }

@@ -368,51 +368,64 @@
 }
 
 /* ---- 教育经历 ---- */
+/* 网格等高行：统一每个栏目卡片的高度 */
 .education-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: var(--space-4);
+  grid-auto-rows: 1fr;
 }
 
 .education-item {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   gap: var(--space-6);
   padding: var(--space-8);
-  background: var(--bg-glass);
+  background-color: var(--bg-glass);
+  /* 悬停幕布：半透明暗绿光束从左向右铺满（600ms），透出底色保持文字可读 */
+  background-image: linear-gradient(var(--accent-green-beam), var(--accent-green-beam));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  transition: border-color var(--duration-base) var(--ease-out);
-}
-
-.education-item + .education-item {
-  margin-top: var(--space-4);
+  transition:
+    background-size 600ms var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
 .education-item:hover {
-  border-color: var(--border-strong);
+  background-size: 100% 100%;
+  border-color: var(--accent-green-deep);
 }
 
 .education-item h3 {
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   letter-spacing: 0.025em;
   margin-bottom: var(--space-2);
 }
 
 .education-item .school {
   color: var(--text-secondary);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
 }
 
+/* 固定右栏宽度，统一各卡片左右分栏比例；成绩/状态底对齐 */
 .education-item .meta {
+  display: flex;
+  flex-direction: column;
   text-align: right;
-  flex-shrink: 0;
+  flex: 0 0 15rem;
+}
+
+.education-item .meta .score {
+  margin-top: auto;
 }
 
 .education-item .date {
   display: block;
   color: var(--text-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   white-space: nowrap;
   margin-bottom: var(--space-2);
 }
@@ -421,6 +434,18 @@
   font-size: clamp(var(--text-xl), 3vw, var(--text-5xl));
   font-weight: 700;
   color: var(--accent-green);
+  transition: color 600ms var(--ease-out);
+}
+
+/* 长文本成绩（如奖学金名称）使用较小字号 */
+.education-item .score-text {
+  font-size: clamp(var(--text-sm), 1.2vw, var(--text-lg));
+  line-height: 1.4;
+}
+
+/* 悬停时右侧绿色文字反转为白色 */
+.education-item:hover .score {
+  color: var(--text-primary);
 }
 
 @media (max-width: 640px) {
@@ -429,6 +454,8 @@
   }
 
   .education-item .meta {
+    flex: 0 0 auto;
+    width: 100%;
     text-align: left;
   }
 }
@@ -436,8 +463,29 @@
 /* ---- 项目卡 ---- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-8);
+  max-width: 64rem;
+  margin-inline: auto;
+  /* 为卡片悬停的水平旋转提供 3D 透视 */
+  perspective: 1200px;
+}
+
+/* 奇数个项目时，最后一卡居中且与上方卡片同宽 */
+.project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - var(--space-8) / 2);
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:last-child:nth-child(odd) {
+    width: 100%;
+  }
 }
 
 .project-card {
@@ -448,13 +496,13 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
-  transition: transform var(--duration-base) var(--ease-out),
+  transition: transform 600ms var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) rotateY(20deg);
   border-color: var(--accent);
   box-shadow: var(--shadow-glow);
 }
@@ -509,10 +557,16 @@
   color: var(--accent);
 }
 
-/* ---- Bento 网格 ---- */
+/* ---- Bento 网格：4 行 × 5 列定制布局 ---- */
 .bento {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, minmax(9rem, auto));
+  grid-template-areas:
+    "intro intro intro quote quote"
+    "intro intro intro paper paper"
+    "stack stack art   art   art"
+    "mail  mail  art   art   art";
   gap: var(--space-4);
 }
 
@@ -528,15 +582,18 @@
   border-color: var(--border-strong);
 }
 
-.bento-intro  { grid-column: span 4; }
-.bento-quote  { grid-column: span 2; }
-.bento-paper  { grid-column: span 2; }
-.bento-stack  { grid-column: span 2; }
-.bento-art    { grid-column: span 2; }
-.bento-mail   { grid-column: span 6; }
+.bento-intro { grid-area: intro; }
+.bento-quote { grid-area: quote; }
+.bento-paper { grid-area: paper; }
+.bento-stack { grid-area: stack; }
+.bento-mail  { grid-area: mail; }
+.bento-art   { grid-area: art; }
 
 @media (max-width: 768px) {
-  .bento > * { grid-column: span 6 !important; }
+  .bento {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .bento-card .label {
@@ -572,6 +629,77 @@
 .bento-art img {
   max-width: 70%;
   height: auto;
+}
+
+/* ---- 旅途时间线（仿参考站 Journey） ---- */
+.journey-intro {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 40rem;
+  margin: calc(-1 * var(--space-8)) auto var(--space-16);
+}
+
+.journey-item {
+  display: flex;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.journey-item:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.journey-year {
+  flex-shrink: 0;
+  min-width: 9rem;
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-5xl));
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.journey-body p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.journey-photos {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.journey-photo {
+  width: 200px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 30% 20%, var(--accent-dim), transparent 60%),
+    var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  overflow: hidden;
+}
+
+.journey-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .journey-item {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .journey-year {
+    min-width: 0;
+  }
 }
 
 /* ---- 联系 / 页脚 ---- */

@@ -12,6 +12,8 @@
   --accent: #cbacf9;           /* 主强调色：淡紫 */
   --accent-dim: rgba(203, 172, 249, 0.12); /* 强调色淡底 */
   --accent-green: #00ff99;     /* 次强调色：荧光绿（少量点缀） */
+  --accent-green-deep: #069f66; /* 暗绿：教育卡片悬停光束（取自参考站 secondary） */
+  --accent-green-beam: rgba(6, 159, 102, 0.42); /* 半透明光束：透出底色，保持文字可读 */
   --text-primary: #ffffff;
   --text-secondary: #bec1dd;
   --text-muted: #7c7f9a;
