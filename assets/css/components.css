@@ -621,15 +621,67 @@ html.js .page-transition {
 }
 
 .bento-card {
-  background: var(--bg-glass);
+  position: relative;
+  background-color: var(--bg-glass);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
+  overflow: hidden;
   transition: border-color var(--duration-base) var(--ease-out);
 }
 
 .bento-card:hover {
   border-color: var(--border-strong);
+}
+
+/* 背景图卡片：内联 style 写 --bento-bg: url('xxx.jpg') 即可启用背景图 */
+.bento-bg {
+  background-image:
+    linear-gradient(rgba(15, 14, 26, 0.35), rgba(15, 14, 26, 0.35)),
+    var(--bento-bg, none);
+  background-size: cover;
+  background-position: center;
+}
+
+/* 卡片内的一句话 */
+.bento-caption {
+  position: absolute;
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-primary);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* 左下角（简介大卡） */
+.bento-caption-bl {
+  left: var(--space-6);
+  bottom: var(--space-6);
+}
+
+/* 靠左垂直居中（窄条卡） */
+.bento-caption-left {
+  left: var(--space-6);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 邮箱卡：文字居中靠上，按钮靠下 */
+.bento-mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bento-mail .mail-title {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.bento-mail .btn {
+  margin-top: auto;
 }
 
 .bento-intro { grid-area: intro; }
@@ -646,40 +698,6 @@ html.js .page-transition {
   }
 }
 
-.bento-card .label {
-  font-size: var(--text-xs);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: var(--space-4);
-}
-
-.bento-quote blockquote {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1.5;
-}
-
-.bento-paper .big {
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  color: var(--accent-green);
-}
-
-.bento-art {
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 50% 40%, var(--accent-dim), transparent 65%),
-    var(--bg-glass);
-}
-
-.bento-art img {
-  max-width: 70%;
-  height: auto;
-}
 
 /* ---- 旅途时间线（仿参考站：粘性年份 + 滚动切换，每年占一屏） ---- */
 .journey-intro {

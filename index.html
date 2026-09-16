@@ -157,49 +157,33 @@
           <span data-i18n="about.t1">关于</span><span class="accent" data-i18n="about.t2">我</span>
         </h2>
         <div class="bento">
-          <div class="bento-card bento-intro reveal">
-            <p class="label" data-i18n="bento.intro.label">// 简介</p>
-            <p data-i18n="bento.intro.text">
-              你好，我是黄俊皓。Vibe Coding 实践者——用自然语言驱动 AI 构建产品，这个网站即成果之一。大学期间自学 Python（爬虫 / Pandas / 机器学习），并以共同第一作者身份发表 SSCI Q2 论文。我相信：AI 提供雏形，人负责完善。
+          <!-- 背景图添加方式：在卡片的 style 中写 --bento-bg: url('图片名.jpg') -->
+          <div class="bento-card bento-intro bento-bg reveal">
+            <p class="bento-caption bento-caption-bl" data-i18n="bento.intro.caption">Agent搭建</p>
+          </div>
+          <div class="bento-card bento-quote bento-bg reveal">
+            <p class="bento-caption bento-caption-left">
+              <span data-i18n="bento.quote.line1">母语：普通话、粤语</span><br />
+              <span data-i18n="bento.quote.line2">英语流利</span>
             </p>
           </div>
-          <div class="bento-card bento-quote reveal">
-            <p class="label" data-i18n="bento.quote.label">// 信条</p>
-            <blockquote data-i18n="bento.quote.text">「人工智能的时代来了，个人的时代也来了。」</blockquote>
+          <div class="bento-card bento-paper bento-bg reveal">
+            <p class="bento-caption bento-caption-left" data-i18n="bento.paper.caption">主要技术栈：Python、LangChain</p>
           </div>
-          <div class="bento-card bento-paper reveal">
-            <p class="label" data-i18n="bento.paper.label">// 学术成果</p>
-            <p class="big">SSCI Q2</p>
-            <p>
-              <span data-i18n="bento.paper.sub">共同第一作者 · 2024.10</span><br />
-              <span data-i18n="bento.paper.line2">N-BEATS 时序预测 × 可持续旅游</span>
-            </p>
+          <!-- 后两行左上：靠左文字 + 可添加背景图 -->
+          <div class="bento-card bento-stack bento-bg reveal">
+            <p class="bento-caption bento-caption-left" data-i18n="bento.stack.caption">Agent搭建者</p>
           </div>
-          <div class="bento-card bento-stack reveal">
-            <p class="label" data-i18n="bento.stack.label">// 技术栈</p>
-            <div class="project-tech">
-              <span class="chip">Python</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">React</span>
-              <span class="chip">Java</span>
-              <span class="chip">Spring AI</span>
-              <span class="chip">Cursor</span>
-            </div>
-          </div>
-          <div class="bento-card bento-art reveal">
-            <!-- 替换为压缩后的 tv-myself 插画：<img src="tv-myself.webp" alt="我的插画" /> -->
-            <span class="label">ILLUSTRATION</span>
-          </div>
+          <!-- 后两行左下：文字居中靠上，按钮靠下 -->
           <div class="bento-card bento-mail reveal">
-            <p class="label" data-i18n="bento.mail.label">// 邮箱</p>
-            <p style="margin-bottom: var(--space-4)" data-i18n="bento.mail.text">对我的经历感兴趣？欢迎写信交流。</p>
-            <button class="btn btn-primary" type="button" data-copy="1004601438@qq.com">
-              <span class="btn-label" data-i18n="bento.mail.btn">复制邮箱地址</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <rect x="9" y="9" width="13" height="13" rx="2" />
-                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-              </svg>
+            <p class="mail-title" data-i18n="bento.mail.title">想要与我联系吗？</p>
+            <button class="btn btn-primary" type="button" data-copy="hjunhao26@163.com">
+              <span class="btn-label" data-i18n="bento.mail.btn">复制我的邮箱地址</span>
             </button>
+          </div>
+          <!-- 后两行右侧 2x3：靠左文字 + 可添加背景图 -->
+          <div class="bento-card bento-art bento-bg reveal">
+            <p class="bento-caption bento-caption-left" data-i18n="bento.art.caption">探索未来的可能性</p>
           </div>
         </div>
       </section>
