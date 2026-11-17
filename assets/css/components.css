@@ -609,6 +609,7 @@ html.js .page-transition {
 
 /* ---- Bento 网格：4 行 × 5 列定制布局 ---- */
 .bento {
+  container-type: inline-size;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, minmax(9rem, auto));
@@ -778,29 +779,110 @@ html.js .page-transition {
 .greet-11 { left: 55%; bottom: 27%; }
 .greet-12 { right: 47%; bottom: 15%; }
 
-/* 技术栈卡：右侧竖排标签链，竖直短虚线串联 */
-.bento-tech-tags {
-  right: var(--space-6);
+/* 技术栈卡：右侧两列大药丸。左列偏低，虚线向右；右列偏高，虚线向上 */
+.bento-tech-board {
+  --tech-flow: #38bdf8;
+  --tech-dash: 5px;
+  --tech-period: 14px;
+  --tech-line: 1px;
+  --tech-gap-y: var(--space-8);
+  --tech-gap-x: var(--space-6);
+  right: var(--space-4);
   top: 50%;
   transform: translateY(-50%);
   display: flex;
+  align-items: flex-start;
+  gap: var(--tech-gap-x);
+}
+
+.tech-col {
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: var(--tech-gap-y);
 }
 
-.tech-tag {
-  padding: var(--space-1) var(--space-3);
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
+.tech-col-low {
+  margin-top: var(--space-4);
+}
+
+.tech-pill {
+  position: relative;
+  display: block;
+  min-width: 7.5rem;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  line-height: 1.2;
+  color: var(--text-secondary);
+  text-align: center;
   white-space: nowrap;
+  background: var(--border-strong);
+  border-radius: var(--radius-lg);
 }
 
-.tech-link {
-  width: 0;
-  height: var(--space-3);
-  border-left: 1px dashed var(--border-strong);
+.tech-flow {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: repeat;
+  filter: drop-shadow(0 0 3px rgb(56 189 248 / 90%));
+}
+
+.tech-flow-up {
+  left: 50%;
+  bottom: 100%;
+  width: var(--tech-line);
+  height: var(--tech-gap-y);
+  transform: translateX(-50%);
+  background-image: repeating-linear-gradient(
+    to top,
+    var(--tech-flow) 0 var(--tech-dash),
+    transparent var(--tech-dash) var(--tech-period)
+  );
+  animation: tech-flow-up 0.9s linear infinite;
+}
+
+.tech-flow-x {
+  left: 100%;
+  top: 50%;
+  width: calc(var(--tech-gap-x) + var(--space-2));
+  height: var(--tech-line);
+  transform: translateY(-50%);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--tech-flow) 0 var(--tech-dash),
+    transparent var(--tech-dash) var(--tech-period)
+  );
+  animation: tech-flow-x 0.9s linear infinite;
+}
+
+@keyframes tech-flow-up {
+  to { background-position: 0 calc(-1 * var(--tech-period)); }
+}
+
+@keyframes tech-flow-x {
+  to { background-position: var(--tech-period) 0; }
+}
+
+/* 笔记本宽度：行高较矮，药丸缩小后仍能并排放在标题右侧 */
+@container (max-width: 68rem) {
+  .bento-paper .bento-caption {
+    max-width: 26%;
+  }
+
+  .bento-tech-board {
+    --tech-gap-y: var(--space-3);
+    --tech-gap-x: var(--space-3);
+    right: var(--space-3);
+  }
+
+  .tech-col-low {
+    margin-top: var(--space-2);
+  }
+
+  .tech-pill {
+    min-width: 5.5rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
 }
 
 /* Agent 卡：右侧大号终端符号 */
@@ -846,15 +928,35 @@ html.js .page-transition {
   opacity: 0.7;
 }
 
-/* 前景文字限宽：窄屏自动换行，不与右侧装饰重叠 */
+/* 前景文字限宽：宽屏给右侧药丸留空；手机端标题改到上方 */
 .bento-quote .bento-caption { max-width: 68%; }
-.bento-paper .bento-caption { max-width: 52%; }
 .bento-art   .bento-caption { max-width: 60%; }
+
+@container (min-width: 68rem) {
+  .bento-paper .bento-caption { max-width: 34%; }
+}
 
 @media (max-width: 768px) {
   .bento {
     display: flex;
     flex-direction: column;
+  }
+
+  .bento-paper {
+    min-height: 18rem;
+  }
+
+  .bento-paper .bento-caption {
+    top: var(--space-6);
+    right: var(--space-6);
+    max-width: none;
+    transform: none;
+  }
+
+  .bento-tech-board {
+    top: auto;
+    bottom: var(--space-4);
+    transform: none;
   }
 }
 
