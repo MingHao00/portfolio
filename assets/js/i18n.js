@@ -44,7 +44,7 @@
       'bento.paper.kicker': '主要技术栈',
       'bento.paper.title': 'Python、LangChain',
       'bento.stack.caption': 'Agent搭建者',
-      'bento.mail.title': '想要与我联系吗？',
+      'bento.mail.title': '你想与我联系吗？',
       'bento.mail.btn': '复制我的邮箱地址',
       'bento.art.caption': '探索未来的可能性',
       'journey.t1': '我的',

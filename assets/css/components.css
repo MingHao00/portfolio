@@ -676,7 +676,7 @@ html.js .page-transition {
   transform: translateY(-50%);
 }
 
-/* 邮箱卡：文字居中靠上，按钮靠下 */
+/* 邮箱卡：问句在上，鲸鱼娘倚在复制按钮上沿 */
 .bento-mail {
   display: flex;
   flex-direction: column;
@@ -684,13 +684,39 @@ html.js .page-transition {
 }
 
 .bento-mail .mail-title {
-  margin: var(--space-2) 0 0;
+  margin: 0;
   font-size: var(--text-lg);
   font-weight: 700;
+  text-align: center;
+}
+
+.mail-lean {
+  --lean-h: 11rem;
+  position: relative;
+  width: min(100%, 18rem);
+  height: var(--lean-h);
+  margin-top: auto;
+}
+
+.mail-whale {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .bento-mail .btn {
-  margin-top: auto;
+  position: absolute;
+  /* 左缘伸进手掌，文字再往右，避开盖过来的头发 */
+  left: calc(var(--lean-h) * 0.4);
+  top: 48%;
+  z-index: 0;
+  margin: 0;
+  padding-left: 3.25rem;
 }
 
 .bento-intro { grid-area: intro; aspect-ratio: 3 / 2; }
