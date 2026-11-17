@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/components.css?v=26" />
+    <link rel="stylesheet" href="assets/css/components.css?v=35" />
   </head>
   <body>
     <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
@@ -222,15 +222,27 @@
               </button>
             </div>
           </div>
-          <!-- 后两行右侧 2x3：靠左文字 + 可添加背景图 -->
-          <div class="bento-card bento-art bento-bg reveal">
-            <p class="bento-caption bento-caption-left" data-i18n="bento.art.caption">探索未来的可能性</p>
-            <!-- 装饰：右下角同心双环（圆心推出卡外）+ 一颗轨道光点，静态 -->
-            <div class="bento-deco bento-orbits" aria-hidden="true">
-              <span class="orbit"></span>
-              <span class="orbit orbit-inner"></span>
-              <span class="orbit-dot"></span>
+          <!-- 后两行右侧：左侧文案，右侧三句对话 -->
+          <div class="bento-card bento-art reveal">
+            <div class="art-face">
+              <p class="art-kicker" data-i18n="bento.art.kicker">眼下</p>
+              <p class="art-title">
+                <span data-i18n="bento.art.line1">港大硕士在读，</span>
+                <span data-i18n="bento.art.line2">探索未来的可能性</span>
+              </p>
             </div>
+            <div class="art-chat">
+              <p class="art-bubble art-bubble-user">
+                <span class="art-who" data-i18n="bento.art.you">我</span>
+                <span data-i18n="bento.art.ask">禁止DeepSeek吃白饭来防止核末日，是否同意？</span>
+              </p>
+              <p class="art-bubble art-bubble-think" data-i18n="bento.art.think">DeepSeek 深度思考 5s</p>
+              <p class="art-bubble art-bubble-reply">
+                <span class="art-who">DeepSeek</span>
+                <span data-i18n="bento.art.reply">不同意</span>
+              </p>
+            </div>
+            <div class="bento-deco bento-grid" aria-hidden="true"></div>
           </div>
         </div>
       </section>
@@ -370,7 +382,7 @@
       <p data-i18n="footer">© 2026 Junhao Huang · Built with Vibe Coding</p>
     </footer>
 
-    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/i18n.js?v=4"></script>
     <script src="assets/js/prototype.js"></script>
   </body>
 </html>
