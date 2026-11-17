@@ -609,7 +609,6 @@ html.js .page-transition {
 
 /* ---- Bento 网格：4 行 × 5 列定制布局 ---- */
 .bento {
-  container-type: inline-size;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, minmax(9rem, auto));
@@ -779,20 +778,55 @@ html.js .page-transition {
 .greet-11 { left: 55%; bottom: 27%; }
 .greet-12 { right: 47%; bottom: 15%; }
 
-/* 技术栈卡：右侧两列大药丸。左列偏低，虚线向右；右列偏高，虚线向上 */
-.bento-tech-board {
+/* 技术栈卡：照参考站。空药丸把右列顶高，虚线向下、向右 */
+.bento-paper {
   --tech-flow: #38bdf8;
   --tech-dash: 5px;
   --tech-period: 14px;
   --tech-line: 1px;
-  --tech-gap-y: var(--space-8);
-  --tech-gap-x: var(--space-6);
-  right: var(--space-4);
-  top: 50%;
-  transform: translateY(-50%);
+  --tech-gap-y: 2rem;
+  --tech-gap-x: 1.25rem;
+  --tech-pad-y: 1rem;
+  --tech-pad-x: 0.75rem;
+  --tech-pill-h: 3.25rem;
+}
+
+.tech-face {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.tech-kicker {
+  margin: 0;
+  max-width: 8rem;
+  font-size: var(--text-sm);
+  font-weight: 200;
+  line-height: 1.4;
+  color: #c1c2d3;
+}
+
+.tech-title {
+  margin: 0;
+  max-width: 14rem;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.tech-board {
+  position: absolute;
+  z-index: 0;
+  top: calc(-1 * (var(--tech-pad-y) * 2 + var(--tech-gap-y)));
+  right: calc(-1 * var(--space-4));
   display: flex;
   align-items: flex-start;
   gap: var(--tech-gap-x);
+  pointer-events: none;
 }
 
 .tech-col {
@@ -801,49 +835,58 @@ html.js .page-transition {
   gap: var(--tech-gap-y);
 }
 
-.tech-col-low {
-  margin-top: var(--space-4);
-}
-
 .tech-pill {
   position: relative;
   display: block;
-  min-width: 7.5rem;
-  padding: var(--space-4);
+  min-width: 6.5rem;
+  padding: var(--tech-pad-y) var(--tech-pad-x);
   font-size: var(--text-base);
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--text-secondary);
   text-align: center;
   white-space: nowrap;
-  background: var(--border-strong);
-  border-radius: var(--radius-lg);
+  background: #3a3a44;
+  border-radius: var(--radius-sm);
+}
+
+.tech-pill-slot {
+  min-height: var(--tech-pill-h);
+}
+
+.tech-pill-short {
+  min-height: 0;
+  padding-block: var(--tech-pad-y);
+  font-size: 0;
+  line-height: 0;
 }
 
 .tech-flow {
   position: absolute;
   pointer-events: none;
   background-repeat: repeat;
-  filter: drop-shadow(0 0 3px rgb(56 189 248 / 90%));
+  filter:
+    drop-shadow(0 0 3px rgb(56 189 248 / 90%))
+    drop-shadow(0 0 6px rgb(56 189 248 / 40%));
 }
 
-.tech-flow-up {
+.tech-flow-y {
   left: 50%;
-  bottom: 100%;
+  top: 100%;
   width: var(--tech-line);
   height: var(--tech-gap-y);
   transform: translateX(-50%);
   background-image: repeating-linear-gradient(
-    to top,
+    to bottom,
     var(--tech-flow) 0 var(--tech-dash),
     transparent var(--tech-dash) var(--tech-period)
   );
-  animation: tech-flow-up 0.9s linear infinite;
+  animation: tech-flow-y 0.9s linear infinite;
 }
 
 .tech-flow-x {
   left: 100%;
   top: 50%;
-  width: calc(var(--tech-gap-x) + var(--space-2));
+  width: var(--tech-gap-x);
   height: var(--tech-line);
   transform: translateY(-50%);
   background-image: repeating-linear-gradient(
@@ -854,35 +897,12 @@ html.js .page-transition {
   animation: tech-flow-x 0.9s linear infinite;
 }
 
-@keyframes tech-flow-up {
-  to { background-position: 0 calc(-1 * var(--tech-period)); }
+@keyframes tech-flow-y {
+  to { background-position: 0 var(--tech-period); }
 }
 
 @keyframes tech-flow-x {
   to { background-position: var(--tech-period) 0; }
-}
-
-/* 笔记本宽度：行高较矮，药丸缩小后仍能并排放在标题右侧 */
-@container (max-width: 68rem) {
-  .bento-paper .bento-caption {
-    max-width: 26%;
-  }
-
-  .bento-tech-board {
-    --tech-gap-y: var(--space-3);
-    --tech-gap-x: var(--space-3);
-    right: var(--space-3);
-  }
-
-  .tech-col-low {
-    margin-top: var(--space-2);
-  }
-
-  .tech-pill {
-    min-width: 5.5rem;
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-xs);
-  }
 }
 
 /* Agent 卡：右侧大号终端符号 */
@@ -928,13 +948,9 @@ html.js .page-transition {
   opacity: 0.7;
 }
 
-/* 前景文字限宽：宽屏给右侧药丸留空；手机端标题改到上方 */
+/* 前景文字限宽，避免和右侧装饰叠在一起 */
 .bento-quote .bento-caption { max-width: 68%; }
 .bento-art   .bento-caption { max-width: 60%; }
-
-@container (min-width: 68rem) {
-  .bento-paper .bento-caption { max-width: 34%; }
-}
 
 @media (max-width: 768px) {
   .bento {
@@ -943,20 +959,29 @@ html.js .page-transition {
   }
 
   .bento-paper {
+    --tech-gap-y: var(--space-4);
+    --tech-gap-x: var(--space-3);
+    --tech-pad-y: var(--space-2);
+    --tech-pill-h: 2.25rem;
     min-height: 18rem;
   }
 
-  .bento-paper .bento-caption {
-    top: var(--space-6);
-    right: var(--space-6);
-    max-width: none;
-    transform: none;
+  .tech-face {
+    justify-content: flex-start;
   }
 
-  .bento-tech-board {
-    top: auto;
-    bottom: var(--space-4);
-    transform: none;
+  .tech-title {
+    font-size: var(--text-lg);
+  }
+
+  .tech-board {
+    top: 4.5rem;
+    right: 0;
+  }
+
+  .tech-pill {
+    min-width: 5.5rem;
+    font-size: var(--text-xs);
   }
 }
 

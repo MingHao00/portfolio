@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/components.css?v=14" />
+    <link rel="stylesheet" href="assets/css/components.css?v=20" />
   </head>
   <body>
     <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
@@ -185,18 +185,24 @@
             </div>
           </div>
           <div class="bento-card bento-paper bento-bg reveal">
-            <p class="bento-caption bento-caption-left" data-i18n="bento.paper.caption">主要技术栈：Python、LangChain</p>
-            <!-- 两列错位胶囊：左列偏低并向右连，右列偏高并向上连 -->
-            <div class="bento-deco bento-tech-board" aria-hidden="true">
-              <div class="tech-col tech-col-low">
-                <span class="tech-pill">Dify<span class="tech-flow tech-flow-x"></span></span>
-                <span class="tech-pill">CrewAI<span class="tech-flow tech-flow-x"></span></span>
+            <div class="tech-face">
+              <p class="tech-kicker" data-i18n="bento.paper.kicker">主要技术栈</p>
+              <p class="tech-title" data-i18n="bento.paper.title">Python、LangChain</p>
+            </div>
+            <!-- 结构照参考站：空药丸错位，虚线向下、向右；只换了文字 -->
+            <div class="tech-board" aria-hidden="true">
+              <div class="tech-col">
+                <span class="tech-pill tech-pill-slot"></span>
+                <span class="tech-pill">Dify<span class="tech-flow tech-flow-y"></span><span class="tech-flow tech-flow-x"></span></span>
+                <span class="tech-pill">CrewAI<span class="tech-flow tech-flow-y"></span><span class="tech-flow tech-flow-x"></span></span>
                 <span class="tech-pill">LlamaIndex<span class="tech-flow tech-flow-x"></span></span>
+                <span class="tech-pill tech-pill-short"></span>
               </div>
               <div class="tech-col">
-                <span class="tech-pill">PostgreSQL</span>
-                <span class="tech-pill">FastAPI<span class="tech-flow tech-flow-up"></span></span>
-                <span class="tech-pill">MySQL<span class="tech-flow tech-flow-up"></span></span>
+                <span class="tech-pill tech-pill-short"></span>
+                <span class="tech-pill">PostgreSQL<span class="tech-flow tech-flow-y"></span></span>
+                <span class="tech-pill">FastAPI<span class="tech-flow tech-flow-y"></span></span>
+                <span class="tech-pill">MySQL<span class="tech-flow tech-flow-y"></span></span>
               </div>
             </div>
           </div>
