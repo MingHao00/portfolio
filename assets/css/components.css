@@ -643,6 +643,14 @@ html.js .page-transition {
   background-position: center;
 }
 
+/* 大卡比例跟照片一致（3:2），避免 cover 裁掉屏幕；底部只压一行字 */
+.bento-intro.bento-bg {
+  background-image:
+    linear-gradient(to top, rgba(15, 14, 26, 0.72), rgba(15, 14, 26, 0.12) 32%),
+    var(--bento-bg, none);
+  background-position: center;
+}
+
 /* 卡片内的一句话 */
 .bento-caption {
   position: absolute;
@@ -684,7 +692,7 @@ html.js .page-transition {
   margin-top: auto;
 }
 
-.bento-intro { grid-area: intro; }
+.bento-intro { grid-area: intro; aspect-ratio: 3 / 2; }
 .bento-quote { grid-area: quote; }
 .bento-paper { grid-area: paper; }
 .bento-stack { grid-area: stack; }
