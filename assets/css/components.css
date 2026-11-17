@@ -654,6 +654,7 @@ html.js .page-transition {
 /* 卡片内的一句话 */
 .bento-caption {
   position: absolute;
+  z-index: 1; /* 压在装饰层（.bento-deco, z-index: 0）之上 */
   margin: 0;
   font-size: var(--text-lg);
   font-weight: 700;
@@ -698,6 +699,157 @@ html.js .page-transition {
 .bento-stack { grid-area: stack; }
 .bento-mail  { grid-area: mail; }
 .bento-art   { grid-area: art; }
+
+/* ---- Bento 装饰层：极淡、靠右/角落、纯 CSS，不随语言切换（无 data-i18n） ---- */
+.bento-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 语言卡：满幅散落问候，大字稍显、小字更淡 */
+.bento-greetings {
+  inset: 0;
+}
+
+.greet-orb {
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  filter: blur(48px);
+}
+
+.greet-orb-a {
+  right: -4rem;
+  top: -4rem;
+  background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+}
+
+.greet-orb-b {
+  bottom: -5rem;
+  left: 25%;
+  background: color-mix(in srgb, var(--accent-green) 5%, transparent);
+}
+
+.bento-greetings .greet {
+  position: absolute;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.greet-xl {
+  color: rgb(255 255 255 / 14%);
+  font-size: var(--text-4xl);
+}
+
+.greet-lg {
+  color: rgb(255 255 255 / 5%);
+  font-size: var(--text-2xl);
+}
+
+.greet-md {
+  color: rgb(255 255 255 / 5%);
+  font-size: var(--text-xl);
+}
+
+.greet-sm {
+  color: rgb(255 255 255 / 5%);
+  font-size: var(--text-lg);
+}
+
+.greet-xs {
+  color: rgb(255 255 255 / 5%);
+  font-size: var(--text-base);
+}
+
+.greet-1 { right: 24%; bottom: 10%; }
+.greet-2 { right: 6%; top: 14%; }
+.greet-3 { left: 6%; bottom: 15%; }
+.greet-4 { right: 9%; bottom: 32%; }
+.greet-5 { left: 43%; top: 8%; }
+.greet-6 { left: 9%; top: 42%; }
+.greet-7 { left: 31%; bottom: 7%; }
+.greet-8 { right: 39%; top: 42%; }
+.greet-9 { right: 4%; top: 54%; }
+.greet-10 { right: 20%; top: 6%; }
+.greet-11 { left: 55%; bottom: 27%; }
+.greet-12 { right: 47%; bottom: 15%; }
+
+/* 技术栈卡：右侧竖排标签链，竖直短虚线串联 */
+.bento-tech-tags {
+  right: var(--space-6);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-tag {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.tech-link {
+  width: 0;
+  height: var(--space-3);
+  border-left: 1px dashed var(--border-strong);
+}
+
+/* Agent 卡：右侧大号终端符号 */
+.bento-terminal {
+  right: var(--space-6);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  opacity: 0.14;
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 右下大卡：右下角同心双环（线框，圆心推出卡外）+ 一颗轨道光点 */
+.bento-orbits {
+  right: calc(-1 * var(--space-16));
+  bottom: calc(-1 * var(--space-16));
+  width: 22rem;
+  height: 22rem;
+}
+
+.bento-orbits .orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+}
+
+.bento-orbits .orbit-inner {
+  inset: var(--space-8);
+}
+
+.bento-orbits .orbit-dot {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+/* 前景文字限宽：窄屏自动换行，不与右侧装饰重叠 */
+.bento-quote .bento-caption { max-width: 68%; }
+.bento-paper .bento-caption { max-width: 52%; }
+.bento-art   .bento-caption { max-width: 60%; }
 
 @media (max-width: 768px) {
   .bento {

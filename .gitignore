@@ -1,3 +1,6 @@
 # 验证截图与浏览器临时数据
 preview-*.png
 .edge-profile*/
+
+# 外部站点参考副本，仅本地借鉴，不进版本库
+reference/
