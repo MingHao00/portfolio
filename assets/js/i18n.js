@@ -27,15 +27,18 @@
       'edu2.score': '在读',
       'projects.t1': '精选',
       'projects.t2': '项目',
-      'p1.name': '个人作品集网站',
-      'p1.desc': '使用 React + TypeScript + Tailwind CSS 构建的现代化作品集网站',
-      'p1.link': '访问项目 →',
+      'p1.name': '作品集网站',
+      'p1.desc': 'HTML、CSS 和原生 JavaScript 搭建，支持中英切换。',
+      'p1.alt': '首页右侧的行星环，没有人物照片',
+      'p1.link': '查看源码 →',
       'p2.name': 'N-BEATS 模型时序预测',
       'p2.desc': '先进时间序列分析技术，优化景区管理和规划、推动旅游业可持续发展',
+      'p2.alt': '九寨沟每日游客量时间序列，取自 N-BEATS 论文',
       'p2.link': '查看论文 →',
-      'p3.name': '主脑 AI 智能体',
-      'p3.desc': '基于 Spring AI 的企业级智能体应用，集成 RAG 知识库与工具调用',
-      'p3.link': '访问项目 →',
+      'p3.name': 'ElderBrain 规则问答',
+      'p3.desc': '用 Python 做的全栈 RAG：只依据中文 SRD 5.1 回答 D&D 规则，每句结论给出处。',
+      'p3.alt': 'ElderBrain 问答界面：左侧登录，右侧是规则对话',
+      'p3.link': '查看源码 →',
       'about.t1': '关于',
       'about.t2': '我',
       'bento.intro.caption': 'Agent搭建',
@@ -110,15 +113,18 @@
       'edu2.score': 'In Progress',
       'projects.t1': 'Featured',
       'projects.t2': 'Projects',
-      'p1.name': 'Personal Portfolio Website',
-      'p1.desc': 'A modern portfolio built with React + TypeScript + Tailwind CSS',
-      'p1.link': 'Visit →',
+      'p1.name': 'Portfolio Website',
+      'p1.desc': 'HTML, CSS, and vanilla JavaScript, in Chinese and English.',
+      'p1.alt': 'The planet rings from the right side of the homepage, with no portrait',
+      'p1.link': 'View source →',
       'p2.name': 'N-BEATS Time-Series Forecasting',
       'p2.desc': 'Advanced time-series analysis for scenic-area management and sustainable tourism',
+      'p2.alt': 'Daily visitor arrivals at Jiuzhaigou, from the N-BEATS paper',
       'p2.link': 'Read Paper →',
-      'p3.name': 'Mastermind AI Agent',
-      'p3.desc': 'Enterprise-grade agent app built on Spring AI, with RAG knowledge base and tool calling',
-      'p3.link': 'Visit →',
+      'p3.name': 'ElderBrain Rules Q&A',
+      'p3.desc': 'A Python full-stack RAG app. It answers D&D rules only from the Chinese SRD 5.1, and cites every sentence.',
+      'p3.alt': 'ElderBrain chat: sign-in on the left, a rules conversation on the right',
+      'p3.link': 'View source →',
       'about.t1': 'About',
       'about.t2': 'Me',
       'bento.intro.caption': 'Agent Builder',
@@ -195,6 +201,9 @@
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       el.textContent = t(el.getAttribute('data-i18n'));
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      el.setAttribute('alt', t(el.getAttribute('data-i18n-alt')));
     });
     document.querySelectorAll('.lang-menu li').forEach((li) => {
       li.setAttribute('aria-selected', String(li.dataset.lang === currentLang));
