@@ -1,7 +1,9 @@
 import createGlobe from "./cobe.mjs";
+import { shouldRenderGlobe } from "./globe-run.mjs";
 import { markerUnderPoint } from "./hobby-globe-math.mjs";
 
 const GLOBE_PX = 600;
+// 清晰度、点密度和转速都保持原样。省占用只靠离开画面时停掉绘制。
 const PIXEL_RATIO = 2;
 const PHI_STEP = 0.01;
 const MARKER_SIZE = 0.06;
@@ -95,6 +97,26 @@ function bindHover(cell, canvas, tip, spin) {
   cell.addEventListener("pointerleave", () => hideMarker(cell, tip, spin));
 }
 
+function bindRenderLoop(globe, canvas) {
+  let inView = true;
+  let pageVisible = document.visibilityState !== "hidden";
+  const reducedMotion = prefersReducedMotion();
+  const sync = () => {
+    const run = shouldRenderGlobe({ inView, pageVisible, reducedMotion });
+    globe.toggle(run);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    inView = entries[entries.length - 1].isIntersecting;
+    sync();
+  });
+  observer.observe(canvas);
+  document.addEventListener("visibilitychange", () => {
+    pageVisible = document.visibilityState !== "hidden";
+    sync();
+  });
+  sync();
+}
+
 function mountGlobe(canvas, spin) {
   const reduced = prefersReducedMotion();
   return createGlobe(canvas, {
@@ -129,7 +151,8 @@ function startHobbyGlobe() {
   if (!canvas || !cell || !tip) return;
   const spin = { phi: 0, paused: false };
   try {
-    mountGlobe(canvas, spin);
+    const globe = mountGlobe(canvas, spin);
+    bindRenderLoop(globe, canvas);
   } catch (error) {
     canvas.dataset.globeError = error instanceof Error ? error.name : "failed";
     canvas.hidden = true;
