@@ -1366,30 +1366,68 @@ html.js .page-transition {
   object-fit: cover;
 }
 
-.hobby-bars {
+.hobby-stage--gamer {
+  flex: 1;
+  min-height: 11rem;
+}
+
+.hobby-stage--gamer img {
   position: absolute;
   inset: 0;
+  object-position: center 58%;
+}
+
+.hobby-cell--dream {
+  position: relative;
+}
+
+/* 画布比格子大，只露出上半颗球，下沿被格子裁掉 */
+.hobby-globe {
+  position: absolute;
+  z-index: 0;
+  width: 37.5rem;
+  height: 37.5rem;
+  right: -2.5rem;
+  bottom: -20rem;
+  pointer-events: none;
+}
+
+.hobby-globe-tip {
+  position: fixed;
+  z-index: 40;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(17, 17, 17, 0.95);
+  pointer-events: none;
 }
 
-.hobby-bars i {
-  display: block;
-  width: 0.4rem;
-  height: 7rem;
-  border-radius: var(--radius-full);
-  background: var(--accent);
-  opacity: 0.85;
-  transform-origin: center;
+.hobby-globe-tip[hidden] {
+  display: none;
 }
 
-.hobby-bars i:nth-child(1) { transform: scaleY(0.45); }
-.hobby-bars i:nth-child(2) { transform: scaleY(0.8); }
-.hobby-bars i:nth-child(3) { transform: scaleY(1); }
-.hobby-bars i:nth-child(4) { transform: scaleY(0.62); }
-.hobby-bars i:nth-child(5) { transform: scaleY(0.35); opacity: 0.55; }
+.hobby-globe-tip-label {
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.hobby-globe-tip-country {
+  color: #a3a3a3;
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 900px) {
+  .hobby-globe {
+    width: 26rem;
+    height: 26rem;
+    right: -2.5rem;
+    bottom: -14rem;
+  }
+}
 
 .hobby-covers {
   position: relative;

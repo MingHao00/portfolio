@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/components.css?v=44" />
+    <link rel="stylesheet" href="assets/css/components.css?v=53" />
   </head>
   <body>
     <!-- 页面切换遮罩：6 条紫色长块，初始铺满 -->
@@ -74,7 +74,7 @@
         <h2 class="section-title reveal">
           <span data-i18n="hobbies.t1">兴趣</span><span class="accent" data-i18n="hobbies.t2">爱好</span>
         </h2>
-        <p class="hobby-lead reveal" data-i18n="hobbies.lead">阅读、音乐、篮球，以及动漫与游戏。</p>
+        <p class="hobby-lead reveal" data-i18n="hobbies.lead">阅读、游戏、篮球，以及世界各地的比赛。</p>
         <div class="hobby-bento">
           <article class="hobby-cell hobby-cell--wide reveal">
             <h3 data-i18n="hobby3.title">篮球</h3>
@@ -147,33 +147,28 @@
             </div>
           </article>
           <article class="hobby-cell hobby-cell--half hobby-cell--split reveal">
-            <h3 data-i18n="hobby2.title">音乐</h3>
-            <p data-i18n="hobby2.desc">弹吉他放松，歌单以 Lo-fi 和独立摇滚为主，写代码时的最佳背景音。</p>
-            <div class="hobby-stage hobby-stage--music" aria-hidden="true">
-              <span class="hobby-bars"><i></i><i></i><i></i><i></i><i></i></span>
+            <h3 data-i18n="hobby2.title">游戏迷</h3>
+            <p data-i18n="hobby2.desc">我是个游戏迷，街霸6忠实爱好者，MR1800+ 国内500名左右，欢迎与我约战！</p>
+            <div class="hobby-stage hobby-stage--gamer">
+              <img
+                src="assets/images/hobby-gamer.jpg"
+                alt="街霸6比赛现场"
+                data-i18n-alt="hobby2.alt"
+              />
             </div>
           </article>
-          <article class="hobby-cell hobby-cell--half reveal">
-            <h3 data-i18n="hobby4.title">动漫与游戏</h3>
-            <p data-i18n="hobby4.desc">在动画与游戏里收集故事与灵感，好的作品总能反哺创作。</p>
-            <div class="hobby-covers" aria-hidden="true">
-              <div class="hobby-cover-row">
-                <span class="hobby-cover" data-i18n="hobby4.c1">动画</span>
-                <span class="hobby-cover" data-i18n="hobby4.c2">游戏</span>
-                <span class="hobby-cover" data-i18n="hobby4.c3">故事</span>
-                <span class="hobby-cover" data-i18n="hobby4.c4">灵感</span>
-                <span class="hobby-cover" data-i18n="hobby4.c1">动画</span>
-                <span class="hobby-cover" data-i18n="hobby4.c2">游戏</span>
-              </div>
-              <div class="hobby-cover-row hobby-cover-row--shift">
-                <span class="hobby-cover" data-i18n="hobby4.c2">游戏</span>
-                <span class="hobby-cover" data-i18n="hobby4.c3">故事</span>
-                <span class="hobby-cover" data-i18n="hobby4.c1">动画</span>
-                <span class="hobby-cover" data-i18n="hobby4.c4">灵感</span>
-                <span class="hobby-cover" data-i18n="hobby4.c2">游戏</span>
-                <span class="hobby-cover" data-i18n="hobby4.c3">故事</span>
-              </div>
-            </div>
+          <article class="hobby-cell hobby-cell--half hobby-cell--dream reveal">
+            <h3 data-i18n="hobby4.title">梦想去世界各地参加比赛</h3>
+            <p data-i18n="hobby4.desc">想要出国去打一些游戏比赛！看看世界各地的高手！</p>
+            <canvas
+              class="hobby-globe"
+              data-i18n-aria="hobby4.globe"
+              aria-label="一颗缓慢旋转的地球"
+            ></canvas>
+            <p class="hobby-globe-tip" hidden>
+              <span class="hobby-globe-tip-label"></span>
+              <span class="hobby-globe-tip-country"></span>
+            </p>
           </article>
         </div>
       </section>
@@ -216,7 +211,8 @@
       <p data-i18n="footer">© 2026 Junhao Huang · Built with Vibe Coding</p>
     </footer>
 
-    <script src="assets/js/i18n.js?v=20"></script>
+    <script src="assets/js/i18n.js?v=25"></script>
     <script src="assets/js/prototype.js"></script>
+    <script type="module" src="assets/js/hobby-globe.mjs?v=1"></script>
   </body>
 </html>
