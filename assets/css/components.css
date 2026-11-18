@@ -1604,8 +1604,8 @@ html.js .page-transition {
 
 /* 未来计划：窄清单，实心点是进行中，右上角数字是实心点数量 */
 .plan-board {
-  width: min(100%, 22rem);
-  margin-inline: auto;
+  width: auto;
+  margin-inline: 0;
   padding: var(--space-4);
   border-radius: var(--radius-xl);
   background: #18181b;
@@ -1721,29 +1721,31 @@ html.js .page-transition {
 }
 
 .life-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
+  align-items: stretch;
 }
 
 .life-grid > .routine-card,
 .life-grid > .song-card,
-.life-grid > .plan-board {
-  flex: 1 1 15rem;
+.life-grid > .plan-board,
+.life-grid > .life-toys {
   width: auto;
-  max-width: 20rem;
-  min-width: min(100%, 15rem);
-  margin-inline: 0;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  height: 100%;
 }
 
 .life-toys {
-  flex: 1 1 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-4);
+  display: block;
+}
+
+@media (min-width: 760px) {
+  .life-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .routine-card {
@@ -1848,7 +1850,7 @@ html.js .page-transition {
 }
 
 .song-artist {
-  margin: var(--space-1) 0 0;
+  margin: var(--space-1) 0 var(--space-3);
   color: #e0e7ff;
   font-size: var(--text-xs);
   font-weight: 600;
@@ -1863,7 +1865,7 @@ html.js .page-transition {
   flex: none;
   width: 100%;
   height: 152px;
-  margin-top: var(--space-3);
+  margin-top: auto;
   border: 0;
   border-radius: var(--radius-lg);
   background: #1e1b4b;
@@ -2031,7 +2033,8 @@ html.js .page-transition {
 .toy-chip--ball { background: #22c55e; }
 
 .sf-trainer {
-  width: min(100%, 22rem);
+  width: 100%;
+  height: 100%;
   padding: var(--space-4);
   border-radius: var(--radius-xl);
   background: #18181b;
@@ -2278,4 +2281,94 @@ html.js .page-transition {
   text-align: center;
   color: var(--text-muted);
   font-size: var(--text-sm);
+}
+
+.thanks-frame {
+  position: relative;
+  overflow: hidden;
+  padding: 1px;
+  border-radius: 1.75rem;
+  background: #1c1c2e;
+}
+
+.thanks-orbit {
+  position: absolute;
+  z-index: 2;
+  width: 6rem;
+  height: 6rem;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, var(--accent-green) 30%, transparent 68%);
+  opacity: 0.8;
+  pointer-events: none;
+  offset-path: inset(0 round 1.75rem);
+  animation: thanks-orbit 8s linear infinite;
+}
+
+.thanks-panel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: min(40rem, 88vh);
+  overflow: hidden;
+  border-radius: calc(1.75rem - 1px);
+  background: linear-gradient(to bottom, var(--bg-base), #141420);
+}
+
+.thanks-beams {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.thanks-beams span {
+  position: absolute;
+  top: -6rem;
+  width: 1px;
+  height: var(--beam-h);
+  border-radius: var(--radius-full);
+  background: linear-gradient(to top, var(--accent-green), transparent);
+  animation: thanks-fall var(--beam-t) linear infinite;
+  animation-delay: var(--beam-d);
+}
+
+.thanks-beams span:nth-child(1) { left: 6%; --beam-h: 3.5rem; --beam-t: 6.5s; --beam-d: 0s; }
+.thanks-beams span:nth-child(2) { left: 18%; --beam-h: 1.5rem; --beam-t: 8s; --beam-d: -2s; }
+.thanks-beams span:nth-child(3) { left: 32%; --beam-h: 3.5rem; --beam-t: 7s; --beam-d: -3.5s; }
+.thanks-beams span:nth-child(4) { left: 48%; --beam-h: 5rem; --beam-t: 9s; --beam-d: -1s; }
+.thanks-beams span:nth-child(5) { left: 63%; --beam-h: 3.5rem; --beam-t: 6s; --beam-d: -4s; }
+.thanks-beams span:nth-child(6) { left: 78%; --beam-h: 3rem; --beam-t: 7.5s; --beam-d: -2.5s; }
+.thanks-beams span:nth-child(7) { left: 90%; --beam-h: 1.5rem; --beam-t: 8.5s; --beam-d: -5s; }
+
+.thanks-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-inline: var(--space-4);
+  color: var(--text-primary);
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.thanks-title span {
+  display: block;
+}
+
+.thanks-accent {
+  background-image: linear-gradient(90deg, #a855f7, #8b5cf6, #ec4899);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 3px rgba(27, 37, 80, 0.14));
+}
+
+@keyframes thanks-fall {
+  0% { transform: translateY(0); opacity: 0; }
+  12% { opacity: 1; }
+  100% { transform: translateY(46rem); opacity: 0; }
+}
+
+@keyframes thanks-orbit {
+  to { offset-distance: 100%; }
 }
